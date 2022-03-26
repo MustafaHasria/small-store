@@ -8,12 +8,15 @@ import androidx.room.RoomDatabase;
 
 import com.mustafa.smallstore.model.dao.AccountDao;
 import com.mustafa.smallstore.model.dao.CategoryDao;
+import com.mustafa.smallstore.model.dao.ProductDao;
 import com.mustafa.smallstore.model.entity.AccountEntity;
 import com.mustafa.smallstore.model.entity.CategoryEntity;
+import com.mustafa.smallstore.model.entity.ProductEntity;
 
 @Database(entities = {
         AccountEntity.class,
         CategoryEntity.class,
+        ProductEntity.class,
 }, version = 1)
 public abstract class SmallStoreDatabase extends RoomDatabase {
 
@@ -46,6 +49,8 @@ public abstract class SmallStoreDatabase extends RoomDatabase {
     public abstract AccountDao accountDao();
 
     public abstract CategoryDao categoryDao();
+
+    public abstract ProductDao productDao();
     //endregion
 
 
