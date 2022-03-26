@@ -18,17 +18,22 @@ public class AccountEntity {
     @ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB)
     private byte[] image;
 
+    @ColumnInfo(name = "role")
+    private int role;
+
     @ColumnInfo(name = "password")
     private String password;
     //endregion
 
     //region Constructor
 
-    public AccountEntity(String name, byte[] image, String password) {
+    public AccountEntity(String name, byte[] image, int role, String password) {
         this.name = name;
         this.image = image;
+        this.role = role;
         this.password = password;
     }
+
 
     //endregion
 
@@ -64,6 +69,14 @@ public class AccountEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 
     //endregion
