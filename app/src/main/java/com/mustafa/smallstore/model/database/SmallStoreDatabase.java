@@ -82,7 +82,7 @@ public abstract class SmallStoreDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             accountDao.insert(new AccountEntity("admin", null, 0, "0123"));
-            categoryDao.insert(new CategoryEntity("Juice", null, 1));
+            categoryDao.insert(new CategoryEntity("Juice", null, 0));
             return null;
         }
     }
