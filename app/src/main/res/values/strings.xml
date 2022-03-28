@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Small store</string>
+    <string name="todo">TODO</string>
+    <string name="small_store">Small Store</string>
+    <string name="splash_screen_slogan">Work Hard. Have Fun. Make History \n just Shopping !</string>
+    <string name="splash_screen_version">Version\n 1.0</string>
 </resources>
