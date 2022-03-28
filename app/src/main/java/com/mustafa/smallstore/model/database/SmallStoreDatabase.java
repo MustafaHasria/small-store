@@ -67,12 +67,14 @@ public abstract class SmallStoreDatabase extends RoomDatabase {
 
         //region Variables
         AccountDao accountDao;
+        CategoryDao categoryDao;
         //endregion
 
         //region Constructor
 
         public PopulateDbAsyncTask(SmallStoreDatabase smallStoreDatabase) {
             accountDao = smallStoreDatabase.accountDao();
+            categoryDao = smallStoreDatabase.categoryDao();
         }
 
         //endregion
@@ -80,6 +82,7 @@ public abstract class SmallStoreDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             accountDao.insert(new AccountEntity("admin", null, 0, "0123"));
+            categoryDao.insert(new CategoryEntity("Juice", null, 1));
             return null;
         }
     }
