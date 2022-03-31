@@ -6,8 +6,8 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mustafa.smallstore.MainActivity;
 import com.mustafa.smallstore.R;
+import com.mustafa.smallstore.view.main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
