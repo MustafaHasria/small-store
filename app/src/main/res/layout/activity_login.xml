@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/smoke_white"
-    android:focusableInTouchMode="true">
+    android:background="@color/smoke_white">
 
 
     <com.airbnb.lottie.LottieAnimationView
@@ -20,8 +19,7 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/users_animation_login"
-        app:lottie_url="REPLACE_JSON_URL"
-        tools:ignore="MissingConstraints"></com.airbnb.lottie.LottieAnimationView>
+        app:lottie_url="REPLACE_JSON_URL" />
 
 
     <include

@@ -10,13 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.SplashScreen">
         <activity
+            android:name=".view.account.AccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.App.SplashScreen" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
-
+            android:exported="true" />
         <activity
             android:name=".steppers.MainActivitySteppers"
             android:exported="true"
