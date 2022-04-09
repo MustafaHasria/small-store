@@ -14,4 +14,32 @@
     <color name="green">#11D99B</color>
     <color name="grey">#707070</color>
     <color name="greyMax">#2C394B</color>
+
+    //color new color
+    <color name="dark_blue">#34495E</color>
+    <color name="smoke_white">#ECF0F1</color>
+    <color name="light_gray">#BDC3C7</color>
+    <color name="gray_dark">#2C3E50</color>
+
+    //login color
+    <!--colors for modern ui-->
+    <color name="whiteTextColor">#fff</color>
+    <color name="primaryTextColor">#2661FA</color>
+    <color name="loginBkColor">#f0f0f0</color>
+
+    <!--colros for card-->
+    <color name="whiteCardColor">#fff</color>
+
+    <color name="colorText">#504F60</color>
+
+
+    <!-- color for steppers-->
+    //onboarding colors
+    <color name="background_steppers">#F0F4F3</color>
+    <color name="buttontext">#FF7F27</color>
+
+    //indicator color
+    <color name="inactive">#C4C4C4</color>
+    <color name="active">#50C2C9</color>
+
 </resources>

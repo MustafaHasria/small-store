@@ -15,9 +15,24 @@
     </style>
 
 
-    <!--progress style in splash screen-->
-    <style name="progressbar">
-        <item name="colorSecondary">@color/red</item>
+    //region Splash Screen Theme
+
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+
+        // Set the splash screen background, animated icon, and animation duration.
+        <item name="windowSplashScreenBackground">@color/greyMax</item>
+
+        // Use windowSplashScreenAnimatedIcon to add either a drawable or an
+        // animated drawable. One of these is required.(Note: Can Be Animated Or Not)
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/shopping_cart</item>
+
+        <item name="windowSplashScreenAnimationDuration">10000</item>
+
+        // Set the theme of the Activity that directly follows your splash screen.
+        <item name="postSplashScreenTheme">@style/Theme.SmallStore</item>
+        # Required.
+
     </style>
+    //endregion
 
 </resources>

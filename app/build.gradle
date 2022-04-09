@@ -15,6 +15,11 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    //bdal ma a3mel kteer bl wajhat find view by id hay btsarre3 el 3amalyee
+    buildFeatures {
+        viewBinding true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -41,4 +46,8 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
+    //Splash Screen Library
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+    //animation
+    implementation 'com.airbnb.android:lottie:3.4.1'
 }
