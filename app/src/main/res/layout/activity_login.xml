@@ -1,30 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/smoke_white">
+    android:background="@color/grey_10"
+    tools:context=".activity.login.Login">
 
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation_view"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toTopOf="@+id/include"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/users_animation_login"
-        app:lottie_url="REPLACE_JSON_URL" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@color/colorPrimaryDark" />
 
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/layout_login"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="244dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_mlarge">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_mlarge"
+            android:src="@drawable/user_icon_login"
+            app:tint="@android:color/white" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_middle"
+            android:visibility="visible"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="5dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_mlarge">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/spacing_middle"
+                    android:layout_marginBottom="@dimen/spacing_xlarge"
+                    android:background="@drawable/login_button_bk"
+                    android:gravity="center"
+                    android:text="Log In"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="USERNAME"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textColor="@color/blue_600"
+                    android:textStyle="bold"
+                    android:theme="@style/EditText.Grey" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/spacing_mlarge" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PASSWORD"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/grey_40" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:inputType="textPassword"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textColor="@color/blue_600"
+                    android:textStyle="bold"
+                    android:theme="@style/EditText.Grey" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/spacing_mlarge" />
+
+                <include
+                    android:id="@+id/myProgressButton"
+                    layout="@layout/progress_button"
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</RelativeLayout>

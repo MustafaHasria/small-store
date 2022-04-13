@@ -20,13 +20,13 @@
     <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
 
         // Set the splash screen background, animated icon, and animation duration.
-        <item name="windowSplashScreenBackground">@color/greyMax</item>
+        <item name="windowSplashScreenBackground">@color/white</item>
 
         // Use windowSplashScreenAnimatedIcon to add either a drawable or an
         // animated drawable. One of these is required.(Note: Can Be Animated Or Not)
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/shopping_cart</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_screen</item>
 
-        <item name="windowSplashScreenAnimationDuration">10000</item>
+        <item name="windowSplashScreenAnimationDuration">9000</item>
 
         // Set the theme of the Activity that directly follows your splash screen.
         <item name="postSplashScreenTheme">@style/Theme.SmallStore</item>
@@ -35,25 +35,29 @@
     </style>
     //endregion
 
-    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        // Set the splash screen background, animated icon, and animation duration.
-        <item name="windowSplashScreenBackground">@color/grey</item>
-
-        // Use windowSplashScreenAnimatedIcon to add either a drawable or an
-        // animated drawable. One of these is required.
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
-        <item name="windowSplashScreenAnimationDuration">200</item>
-        # Required for
-        # animated icons
-
-        // Set the theme of the Activity that directly follows your splash screen.
-        <item name="postSplashScreenTheme">@style/Theme.SmallStore</item>
-        # Required.
-    </style>
-    //here we are create new style for text view
-
     <style name="TextViewTitle">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+
+    //region For Stepper
+    <!--style for ripple library-->
+    <style name="RippleStyleWhite">
+        <item name="mrl_rippleOverlay">true</item>
+        <item name="mrl_rippleColor">#80FFFFFF</item>
+        <item name="mrl_rippleHover">true</item>
+        <item name="mrl_rippleAlpha">0.2</item>
+    </style>
+
+    <style name="RippleStyleBlack" parent="RippleStyleWhite">
+        <item name="mrl_rippleColor">#8096989A</item>
+    </style>
+
+    <style name="TextAppearance.Subhead.Bold" parent="@style/TextAppearance.AppCompat.Subhead">
+        <item name="android:textStyle">bold</item>
+    </style>
+    //endregion
+
+
 </resources>

@@ -50,4 +50,10 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
     //animation
     implementation 'com.airbnb.android:lottie:3.4.1'
+
+    //Ripple ( For Stepper)
+    implementation 'com.balysv:material-ripple:1.0.2'
+
+    //Rounded Image
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }

@@ -23,9 +23,11 @@
 
     //login color
     <!--colors for modern ui-->
-    <color name="whiteTextColor">#fff</color>
-    <color name="primaryTextColor">#2661FA</color>
-    <color name="loginBkColor">#f0f0f0</color>
+    <color name="colorPrimary">#1976D2</color>
+    <color name="blue_600">#1E88E5</color>
+    <color name="blue_grey_300">#90A4AE</color>
+    <color name="colorPrimaryLight">#1E88E5</color>
+    <color name="green_500">#4CAF50</color>
 
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
@@ -34,12 +36,22 @@
 
 
     <!-- color for steppers-->
-    //onboarding colors
-    <color name="background_steppers">#F0F4F3</color>
-    <color name="buttontext">#FF7F27</color>
+    <color name="grey_40">#999999</color>
+    <color name="grey_10">#e6e6e6</color>
+    <color name="grey_90">#263238</color>
+    <color name="grey_5">#f2f2f2</color>
+    <color name="grey_80">#37474F</color>
+    <color name="grey_60">#666666</color>
+    <color name="grey_20">#cccccc</color>
+    <color name="orange_400">#FFA726</color>
+    <color name="grey_3">#f7f7f7</color>
+    <color name="colorPrimaryDark">#1565C0</color>
+    <color name="blue">#33CCCC</color>
 
-    //indicator color
-    <color name="inactive">#C4C4C4</color>
-    <color name="active">#50C2C9</color>
+
+    //Recycler View (Account)
+    <color name="view_color">#B8BABD</color>
+    <color name="background_color_to_recycler_view">#f6f6f6</color>
+    <color name="content_text_color">#999da4</color>
 
 </resources>

@@ -9,26 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App.SplashScreen">
+
         <activity
-            android:name=".view.account.AccountActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.welcome.WelcomeAfterStepperActivity"
             android:exported="true"
-            android:theme="@style/Theme.App.SplashScreen" />
+            android:theme="@style/Theme.SmallStore" />
+
         <activity
-            android:name=".MainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".steppers.MainActivitySteppers"
+            android:name=".activity.login.Login"
             android:exported="true"
-            android:theme="@style/Theme.SmallStore">
+            android:theme="@style/Theme.SmallStore" />
+        <activity
+            android:name=".activity.stepper.StepperLight"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.account.AccountActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

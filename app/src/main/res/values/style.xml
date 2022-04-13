@@ -6,24 +6,6 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="loginParent" parent="parent">
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/loginBkColor</item>
-        <item name="android:focusableInTouchMode">true</item>
-    </style>
-
-    <style name="headerText" parent="parent">
-        <item name="android:textSize">@dimen/headerTextSize</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/whiteTextColor</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="loginHeader">
-        <item name="android:textColor">@color/primaryTextColor</item>
-        <item name="android:textSize">@dimen/headerTextSize</item>
-        <item name="android:textStyle">bold</item>
-    </style>
 
     <style name="loginCard" parent="parent"></style>
 
@@ -34,7 +16,7 @@
 
     <style name="modifiedEditText" parent="parent">
         <item name="android:textSize">@dimen/newsMoreTextSize</item>
-        <item name="android:backgroundTint">@color/primaryTextColor</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
     </style>
 
     <style name="viewParent">
@@ -44,7 +26,16 @@
 
     <style name="loginButton" parent="viewParent">
         <item name="android:background">@drawable/login_button_bk</item>
-        <item name="android:textColor">@color/whiteTextColor</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+
+    //for Login
+
+    <style name="EditText.Grey" parent="Theme.SmallStore">
+        <item name="colorControlActivated">@color/grey_60</item>
+        <item name="colorControlHighlight">@color/grey_60</item>
+        <item name="colorControlNormal">@color/grey_40</item>
     </style>
 </resources>
