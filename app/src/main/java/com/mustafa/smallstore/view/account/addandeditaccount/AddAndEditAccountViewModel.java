@@ -1,4 +1,4 @@
-package com.mustafa.smallstore.view.account;
+package com.mustafa.smallstore.view.account.addandeditaccount;
 
 import android.app.Application;
 
@@ -11,14 +11,14 @@ import com.mustafa.smallstore.repository.AccountRepository;
 
 import java.util.List;
 
-public class AccountViewModel extends AndroidViewModel {
+public class AddAndEditAccountViewModel extends AndroidViewModel {
 
     //region Variables
     private AccountRepository accountRepository;
     //endregion
 
     //region Constructor
-    public AccountViewModel(@NonNull Application application) {
+    public AddAndEditAccountViewModel(@NonNull Application application) {
         super(application);
         accountRepository = new AccountRepository(application);
     }

@@ -1,8 +1,10 @@
-package com.mustafa.smallstore;
+package com.mustafa.smallstore.view.dashboard;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.mustafa.smallstore.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,5 +1,6 @@
 package com.mustafa.smallstore.view.account;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mustafa.smallstore.databinding.ActivityAccountBinding;
 import com.mustafa.smallstore.model.entity.AccountEntity;
+import com.mustafa.smallstore.view.account.addandeditaccount.AddAndEditAccountActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,11 @@ public class AccountActivity extends AppCompatActivity {
 
         accountViewModel.getAllAccounts().observe(this, accountEntities -> {
             accountAdapter.refreshList(accountEntities);
+        });
+
+        binding.activityAccountFloatingActionButton.setOnClickListener(view -> {
+            Intent intent = new Intent(AccountActivity.this, AddAndEditAccountActivity.class);
+            startActivity(intent);
         });
         setupRecyclerView();
 

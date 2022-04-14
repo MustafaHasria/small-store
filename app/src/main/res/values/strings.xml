@@ -16,4 +16,5 @@
     <!-- for steppers text-->
     <string name="NEXT">NEXT</string>
     <string name="GOT_IT">GOT IT</string>
+    <string name="add_button">Add button</string>
 </resources>

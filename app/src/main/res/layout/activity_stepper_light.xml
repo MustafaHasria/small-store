@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:fitsSystemWindows="false"
     android:orientation="vertical"
-    tools:context=".activity.stepper.StepperLight">
+    tools:context=".view.stepper.StepperLightActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -50,22 +51,16 @@
         android:gravity="center|top"
         android:orientation="horizontal" />
 
-    <com.balysv.materialripple.MaterialRippleLayout
-        style="@style/RippleStyleBlack"
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/grey_10"
+        android:text="@string/NEXT"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textColor="@color/grey_90"
+        android:textStyle="bold" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_next"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/grey_10"
-            android:text="@string/NEXT"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textColor="@color/grey_90"
-            android:textStyle="bold" />
-
-    </com.balysv.materialripple.MaterialRippleLayout>
 
 </LinearLayout>

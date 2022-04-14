@@ -1,4 +1,4 @@
-package com.mustafa.smallstore.activity.stepper;
+package com.mustafa.smallstore.view.stepper;
 
 import android.app.Activity;
 import android.view.View;

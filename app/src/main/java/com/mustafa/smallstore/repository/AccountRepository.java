@@ -41,6 +41,9 @@ public class AccountRepository {
         return accountDao.getAccounts();
     }
 
+    public LiveData<List<AccountEntity>> getAccountsByName(String name) {
+        return accountDao.getAccountsByName(name);
+    }
     //endregion
 
     //region Async tasks

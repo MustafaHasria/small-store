@@ -1,4 +1,4 @@
-package com.mustafa.smallstore.activity.stepper;
+package com.mustafa.smallstore.view.stepper;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,12 +19,12 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.mustafa.smallstore.R;
-import com.mustafa.smallstore.activity.login.Login;
 import com.mustafa.smallstore.databinding.ActivityStepperLightBinding;
+import com.mustafa.smallstore.view.login.LoginActivity;
 
 import java.util.Objects;
 
-public class StepperLight extends AppCompatActivity {
+public class StepperLightActivity extends AppCompatActivity {
 
     //region Variable
     private static final int MAX_STEP = 4;
@@ -59,7 +59,7 @@ public class StepperLight extends AppCompatActivity {
                 binding.btnNext.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent i = new Intent(StepperLight.this, Login.class);
+                        Intent i = new Intent(StepperLightActivity.this, LoginActivity.class);
                         startActivity(i);
                     }
                 });
@@ -144,7 +144,7 @@ public class StepperLight extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(StepperLight.this, Login.class);
+                Intent i = new Intent(StepperLightActivity.this, LoginActivity.class);
                 startActivity(i);
                 finish();
             }

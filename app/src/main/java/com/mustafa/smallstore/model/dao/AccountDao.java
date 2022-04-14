@@ -26,4 +26,6 @@ public interface AccountDao {
     @Query("Select * from account_table order by name")
     LiveData<List<AccountEntity>> getAccounts();
 
+    @Query("Select * from account_table where name =:name  order by name")
+    LiveData<List<AccountEntity>> getAccountsByName(String name);
 }
