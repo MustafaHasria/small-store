@@ -7,11 +7,7 @@
     android:layout_marginTop="8dp"
     android:layout_marginEnd="24dp"
     android:layout_marginBottom="8dp"
-    android:orientation="vertical"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:orientation="vertical">
 
 
     <EditText
@@ -21,15 +17,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
+        android:drawableStart="@drawable/ic_person"
         android:background="@drawable/bg_txt_username"
         android:fontFamily="@font/montserrat_semibold"
         android:hint="Username"
         android:paddingLeft="60dp"
         android:textColor="@color/colorText"
-        android:textSize="40px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:textSize="40px" />
 
     <EditText
         android:id="@+id/editText2"
@@ -51,8 +45,7 @@
     <include
         android:id="@+id/myProgressButton"
         layout="@layout/progress_button"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="15sp" />
 </LinearLayout>

@@ -20,7 +20,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.mustafa.smallstore.R;
 import com.mustafa.smallstore.activity.login.Login;
-import com.mustafa.smallstore.activity.welcome.WelcomeAfterStepperActivity;
 import com.mustafa.smallstore.databinding.ActivityStepperLightBinding;
 
 import java.util.Objects;
@@ -60,7 +59,7 @@ public class StepperLight extends AppCompatActivity {
                 binding.btnNext.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent i = new Intent(StepperLight.this, WelcomeAfterStepperActivity.class);
+                        Intent i = new Intent(StepperLight.this, Login.class);
                         startActivity(i);
                     }
                 });
