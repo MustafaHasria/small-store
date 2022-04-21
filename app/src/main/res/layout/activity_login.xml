@@ -22,16 +22,19 @@
         android:padding="@dimen/spacing_mlarge">
 
         <ImageView
+            android:id="@+id/activity_login_image_user"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/spacing_large"
             android:layout_marginBottom="@dimen/spacing_mlarge"
+            android:contentDescription="@string/todo"
             android:src="@drawable/user_icon_login"
             app:tint="@android:color/white" />
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/activity_login_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_middle"
@@ -54,7 +57,7 @@
                     android:layout_marginBottom="@dimen/spacing_xlarge"
                     android:background="@drawable/login_button_bk"
                     android:gravity="center"
-                    android:text="Log In"
+                    android:text="@string/activity_login_text_view_login"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
@@ -62,12 +65,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="USERNAME"
+                    android:text="@string/activity_login_text_view_user_name"
                     android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_login_text_input_edit_text_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="-4dp"
@@ -88,12 +92,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PASSWORD"
+                    android:text="@string/activity_login_text_view_password"
                     android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/grey_40" />
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_login_text_input_edit_text_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="-4dp"
@@ -112,10 +117,11 @@
                     android:layout_height="@dimen/spacing_mlarge" />
 
                 <include
-                    android:id="@+id/myProgressButton"
+                    android:id="@+id/activity_login_progress_button_login"
                     layout="@layout/progress_button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="52dp"
+                    android:layout_marginTop="10sp" />
 
             </LinearLayout>
 

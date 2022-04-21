@@ -3,26 +3,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:padding="20sp"
+    android:weightSum="10"
     tools:context=".view.account.addandeditaccount.AddAndEditAccountActivity">
 
-    <EditText
-        android:id="@+id/edit_text_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="name" />
+        android:layout_weight="4"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:weightSum="10">
 
-    <EditText
-        android:id="@+id/edit_text_password"
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/activity_add_and_edit_account_image_user"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="85sp"
+            android:layout_marginTop="20sp"
+            android:layout_weight="4"
+            android:background="@drawable/rounded_image"
+            android:elevation="20sp"
+            cardview:riv_corner_radius="35dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/activity_add_and_edit_account_edit_button_add_picture"
+            android:layout_width="200dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="85sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp"
+            android:layout_weight="6"
+            android:background="@drawable/add_image_button"
+            android:elevation="200dp"
+            android:text="Add Picture"
+            android:textColor="@color/colorPrimaryDark" />
+
+    </LinearLayout>
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/activity_add_and_edit_account_edit_text_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="password" />
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:background="@drawable/edit_text_background"
+        android:fontFamily="@font/product_sans_regular"
+        android:hint="Name"
+        android:paddingStart="12dp"
+        android:textColor="@color/blue_600"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        tools:ignore="RtlSymmetry" />
 
-    <Button
-        android:id="@+id/button_add"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/activity_add_and_edit_account_edit_text_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:textAllCaps="false" />
+        android:layout_marginTop="20sp"
+        android:layout_weight="1"
+        android:background="@drawable/edit_text_background"
+        android:fontFamily="@font/product_sans_regular"
+        android:hint="Password"
+        android:paddingStart="12dp"
+        android:textColor="@color/blue_600"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        tools:ignore="RtlSymmetry" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:paddingStart="100dp"
+        android:weightSum="2">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/activity_add_and_edit_account_radio_button_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20sp"
+                android:fontFamily="@font/product_sans_regular"
+                android:soundEffectsEnabled="true"
+                android:text="Admin"
+                android:textColor="@color/blue_600" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/activity_add_and_edit_account_radio_button_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/product_sans_regular"
+                android:soundEffectsEnabled="true"
+                android:text="User"
+                android:textColor="@color/blue_600" />
+
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+    <include
+        android:id="@+id/activity_add_and_edit_account_myProgressButton"
+        layout="@layout/progress_button"
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:layout_weight="3" />
 </LinearLayout>

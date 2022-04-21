@@ -15,6 +15,7 @@ import com.mustafa.smallstore.view.account.addandeditaccount.AddAndEditAccountAc
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -30,6 +31,7 @@ public class AccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
+        Objects.requireNonNull(getSupportActionBar()).hide();
         accountEntityList = new ArrayList<>();
         binding = ActivityAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -54,9 +56,9 @@ public class AccountActivity extends AppCompatActivity {
     //region Setups
     private void setupRecyclerView() {
         accountAdapter = new AccountAdapter(accountEntityList);
-        binding.mainRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        binding.mainRecyclerView.setHasFixedSize(true);
-        binding.mainRecyclerView.setAdapter(accountAdapter);
+        binding.activityAccountRecyclerViewMain.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        binding.activityAccountRecyclerViewMain.setHasFixedSize(true);
+        binding.activityAccountRecyclerViewMain.setAdapter(accountAdapter);
     }
 
     //endregion

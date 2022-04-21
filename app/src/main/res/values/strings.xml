@@ -1,20 +1,20 @@
 <resources>
     <string name="app_name">Small store</string>
-    <string name="todo">TODO</string>
     <string name="small_store">Small Store</string>
     <string name="splash_screen_slogan">Work Hard. Have Fun. Make History \n just Shopping !</string>
     <string name="splash_screen_version">Version\n 1.0</string>
 
     //login
-    <string name="login_email_hint">Email</string>
-    <string name="login_password_hint">Password</string>
-    <string name="signup_login_hint">Already have an account? Sign In</string>
-    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
-    <string name="login_name_hint">Name</string>
-    <string name="login_mobile_number_hint">Mobile Number</string>
+    <string name="activity_login_text_view_login">Log In</string>
+    <string name="activity_login_text_view_password">PASSWORD</string>
+    <string name="activity_login_text_view_user_name">USERNAME</string>
 
     <!-- for steppers text-->
     <string name="NEXT">NEXT</string>
     <string name="GOT_IT">GOT IT</string>
     <string name="add_button">Add button</string>
+    <string name="todo">TODO</string>
+    <string name="activity_add_and_edit_account_name">name</string>
+    <string name="activity_add_and_edit_account_password">password</string>
+    <string name="activity_add_and_edit_account_edit_text_header">Add New Account</string>
 </resources>

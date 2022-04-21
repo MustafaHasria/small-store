@@ -68,9 +68,9 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
         public AccountViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            itemToRecyclerViewTextViewTitle = itemView.findViewById(R.id.item_to_recycler_view_text_view_title);
-            itemToRecyclerViewTextViewContent = itemView.findViewById(R.id.item_to_recycler_view_text_view_content);
-            itemToRecyclerViewImageViewUser = itemView.findViewById(R.id.item_to_recycler_view_image_view_user);
+            itemToRecyclerViewTextViewTitle = itemView.findViewById(R.id.item_to_recycler_view_text_view_name);
+            itemToRecyclerViewTextViewContent = itemView.findViewById(R.id.item_to_recycler_view_text_view_password_and_role);
+            itemToRecyclerViewImageViewUser = itemView.findViewById(R.id.item_to_recycler_view_image_user);
             itemToRecyclerViewRelativeLayout = itemView.findViewById(R.id.item_to_recycler_view_relative_layout);
             // itemToRecyclerViewView = itemView.findViewById(R.id.item_to_recycler_view_view);
         }

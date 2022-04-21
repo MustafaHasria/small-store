@@ -14,6 +14,7 @@
     <color name="green">#11D99B</color>
     <color name="grey">#707070</color>
     <color name="greyMax">#2C394B</color>
+    <color name="text">#217ee7</color>
 
     //color new color
     <color name="dark_blue">#34495E</color>
@@ -53,5 +54,8 @@
     <color name="view_color">#B8BABD</color>
     <color name="background_color_to_recycler_view">#f6f6f6</color>
     <color name="content_text_color">#999da4</color>
+
+
+    <color name="colorEditText">#14000000</color>
 
 </resources>
