@@ -34,7 +34,6 @@ public class AccountEntity {
         this.password = password;
     }
 
-
     //endregion
 
     //region Getters & Setters

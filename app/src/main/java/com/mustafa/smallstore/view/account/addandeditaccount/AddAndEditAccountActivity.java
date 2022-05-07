@@ -1,18 +1,23 @@
 package com.mustafa.smallstore.view.account.addandeditaccount;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.view.View;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.mustafa.smallstore.R;
 import com.mustafa.smallstore.app.button.ProgressButton;
 import com.mustafa.smallstore.databinding.ActivityAddAndEditAccountBinding;
 import com.mustafa.smallstore.model.entity.AccountEntity;
-import com.mustafa.smallstore.view.account.AccountActivity;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class AddAndEditAccountActivity extends AppCompatActivity {
 
@@ -21,7 +26,7 @@ public class AddAndEditAccountActivity extends AppCompatActivity {
     AddAndEditAccountViewModel addAndEditAccountViewModel;
     ActivityAddAndEditAccountBinding binding;
     Bundle bundle;
-    String activityAddAndEditAccountEditTextName, activityAddAndEditAccountEditTextPassword;
+    Bitmap bitmap;
     //endregion
 
     //region Life Cycle
@@ -34,56 +39,92 @@ public class AddAndEditAccountActivity extends AppCompatActivity {
         binding = ActivityAddAndEditAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         addAndEditAccountViewModel = new ViewModelProvider(this).get(AddAndEditAccountViewModel.class);
-        view = findViewById(R.id.activity_add_and_edit_account_myProgressButton);
-
-
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ProgressButton progressButton = new ProgressButton(AddAndEditAccountActivity.this, view);
-                progressButton.buttonActivated();
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        progressButton.buttonFinished();
-
-                        Handler handler1 = new Handler();
-
-                        handler1.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                int Role;
-                                if (binding.activityAddAndEditAccountRadioButtonAdmin.isChecked()) {
-                                    Role = 0;
-                                } else {
-                                    Role = 1;
-                                }
-                                addAndEditAccountViewModel.insert(new AccountEntity(binding.activityAddAndEditAccountEditTextName.getText().toString(),
-                                        null,
-                                        Role,
-                                        binding.activityAddAndEditAccountEditTextPassword.getText().toString()));
-                                //open Account Activity After Add
-                                Intent intent = new Intent(AddAndEditAccountActivity.this, AccountActivity.class);
-                                startActivity(intent);
-
-                            }
-                        }, 2000);
-                    }
-                }, 2000);
-            }
-        });
-
         bundle = getIntent().getExtras();
+        if (bundle != null) {
+            binding.activityAddAndEditAccountMyProgressButton.textView.setText("Update");
+            binding.activityAddAndEditAccountEditTextName.setText(bundle.getString("name"));
+            binding.activityAddAndEditAccountEditTextPassword.setText(bundle.getString("password"));
+            if (bundle.getInt("role") == 0)
+                binding.activityAddAndEditAccountRadioButtonAdmin.setChecked(true);
+            else
+                binding.activityAddAndEditAccountRadioButtonAdmin.isChecked();
+        }
 
-        binding.activityAddAndEditAccountEditTextName.setText(bundle.getString("name"));
-        binding.activityAddAndEditAccountEditTextPassword.setText(bundle.getString("password"));
+        binding.activityAddAndEditAccountMyProgressButton.cardView.setOnClickListener(view -> {
+            ProgressButton progressButton = new ProgressButton(AddAndEditAccountActivity.this, view);
+            progressButton.buttonActivated();
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                progressButton.buttonFinished();
 
-        if (bundle.getInt("role") == 0)
-            binding.activityAddAndEditAccountRadioButtonAdmin.isChecked();
+                Handler handler1 = new Handler();
 
-        else
-            binding.activityAddAndEditAccountRadioButtonUser.isChecked();
+                handler1.postDelayed(() -> {
+                    int role;
+                    if (binding.activityAddAndEditAccountRadioButtonAdmin.isChecked()) {
+                        role = 0;
+                    } else {
+                        role = 1;
+                    }
+                    AccountEntity accountEntity;
+                    if (bitmap != null) {
+                        accountEntity = new AccountEntity(binding.activityAddAndEditAccountEditTextName.getText().toString(),
+                                bitmapToByteArray(bitmap), role,
+                                binding.activityAddAndEditAccountEditTextPassword.getText().toString());
+                    } else {
+                        accountEntity = new AccountEntity(binding.activityAddAndEditAccountEditTextName.getText().toString(),
+                                null, role,
+                                binding.activityAddAndEditAccountEditTextPassword.getText().toString());
+
+                    }
+                    if (bundle != null && bundle.getInt("id") != 0) {
+                        accountEntity.setId(bundle.getInt("id"));
+                        addAndEditAccountViewModel.update(accountEntity);
+                    } else {
+
+                        addAndEditAccountViewModel.insert(accountEntity);
+                    }
+                    //open Account Activity After Add
+                    onBackPressed();
+                }, 2000);
+            }, 2000);
+        });
+        binding.activityAddAndEditAccountButtonChoosePicture.setOnClickListener(view1 -> {
+            chooseImage();
+        });
+    }
+
+    //endregion
+
+    //region On activity result
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            Uri uri = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            binding.activityAddAndEditAccountImageUser.setImageBitmap(bitmap);
+        }
+    }
+
+    //endregion
+
+    //region Methods
+    private void chooseImage() {
+        Intent galleryIntent = new Intent();
+        galleryIntent.setType("image/*");
+        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(galleryIntent, "choose picture"), 1);
+    }
+
+    private byte[] bitmapToByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
     }
     //endregion
 }

@@ -84,6 +84,7 @@ public class AccountActivity extends AppCompatActivity implements AccountAdapter
     @Override
     public void onAccountItemCardMainContainerClickListener(AccountEntity accountEntity) {
         bundle = new Bundle();
+        bundle.putInt("id", accountEntity.getId());
         bundle.putString("name", accountEntity.getName());
         bundle.putString("password", accountEntity.getPassword());
         bundle.putInt("role", accountEntity.getRole());

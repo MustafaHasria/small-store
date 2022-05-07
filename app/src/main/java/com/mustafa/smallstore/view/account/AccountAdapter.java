@@ -1,5 +1,6 @@
 package com.mustafa.smallstore.view.account;
 
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,10 +43,15 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
 
     @Override
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
-        holder.itemToRecyclerViewTextViewTitle.setText(accountEntityList.get(position).getName());
-        holder.itemToRecyclerViewTextViewContent.setText("Role: " + (accountEntityList.get(position).getRole() == 1 ? " User" : "Admin ") + "  " + "Password: " + accountEntityList.get(position).getPassword());
-        //todo set image view
+        AccountEntity accountEntity = accountEntityList.get(position);
+        holder.itemToRecyclerViewTextViewTitle.setText(accountEntity.getName());
+        holder.itemToRecyclerViewTextViewContent.setText("Role: " + (accountEntity.getRole() == 1 ? " User" : "Admin ") + "  " + "Password: " + accountEntityList.get(position).getPassword());
+        if (accountEntity.getImage() != null)
+            holder.itemToRecyclerViewImageViewUser.setImageBitmap(
+                    BitmapFactory
+                            .decodeByteArray(accountEntity.getImage(), 0, accountEntity.getImage().length)
 
+            );
     }
 
     @Override
