@@ -54,7 +54,4 @@ dependencies {
 
     //Rounded Image
     implementation 'com.makeramen:roundedimageview:2.3.0'
-
-    //To Swipe RecyclerView(Delete)
-    implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.3'
 }

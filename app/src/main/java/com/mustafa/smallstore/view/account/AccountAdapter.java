@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mustafa.smallstore.R;
@@ -20,11 +21,13 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
 
     //region Variables
     List<AccountEntity> accountEntityList;
+    AccountOnClickListener accountOnClickListener;
     //endregion
 
     //region Constructor
-    public AccountAdapter(List<AccountEntity> accountEntityList) {
+    public AccountAdapter(List<AccountEntity> accountEntityList, AccountOnClickListener accountOnClickListener) {
         this.accountEntityList = accountEntityList;
+        this.accountOnClickListener = accountOnClickListener;
     }
     //endregion
 
@@ -40,7 +43,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
     @Override
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
         holder.itemToRecyclerViewTextViewTitle.setText(accountEntityList.get(position).getName());
-        holder.itemToRecyclerViewTextViewContent.setText("Role: " + (accountEntityList.get(position).getRole() == 1 ? "Normal User" : "Admin User") + "     Password: " + accountEntityList.get(position).getPassword());
+        holder.itemToRecyclerViewTextViewContent.setText("Role: " + (accountEntityList.get(position).getRole() == 1 ? " User" : "Admin ") + "  " + "Password: " + accountEntityList.get(position).getPassword());
         //todo set image view
 
     }
@@ -57,12 +60,24 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
     }
     //endregion
 
+    //for Delete Swipe Position
+    public AccountEntity getAccountPosition(int position) {
+        return accountEntityList.get(position);
+    }
+
+    //Region Interface
+    public interface AccountOnClickListener {
+        void onAccountItemCardMainContainerClickListener(AccountEntity accountEntity);
+    }
+    //endregion
+
     //region View holder
-    public class AccountViewHolder extends RecyclerView.ViewHolder {
+    public class AccountViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView itemToRecyclerViewTextViewTitle;
         TextView itemToRecyclerViewTextViewContent;
         ImageView itemToRecyclerViewImageViewUser;
         RelativeLayout itemToRecyclerViewRelativeLayout;
+        ConstraintLayout itemToRecyclerViewConstraintLayoutParent;
         //View itemToRecyclerViewView;
 
         public AccountViewHolder(@NonNull View itemView) {
@@ -72,9 +87,16 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
             itemToRecyclerViewTextViewContent = itemView.findViewById(R.id.item_to_recycler_view_text_view_password_and_role);
             itemToRecyclerViewImageViewUser = itemView.findViewById(R.id.item_to_recycler_view_image_user);
             itemToRecyclerViewRelativeLayout = itemView.findViewById(R.id.item_to_recycler_view_relative_layout);
-            // itemToRecyclerViewView = itemView.findViewById(R.id.item_to_recycler_view_view);
+            itemToRecyclerViewConstraintLayoutParent = itemView.findViewById(R.id.item_to_recycler_view_constraint_layout_parent);
+            itemToRecyclerViewConstraintLayoutParent.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            accountOnClickListener.onAccountItemCardMainContainerClickListener(accountEntityList.get(getAdapterPosition()));
         }
     }
     //endregion
+
 
 }

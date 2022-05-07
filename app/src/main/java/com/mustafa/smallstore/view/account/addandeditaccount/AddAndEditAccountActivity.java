@@ -20,12 +20,17 @@ public class AddAndEditAccountActivity extends AppCompatActivity {
     View view;
     AddAndEditAccountViewModel addAndEditAccountViewModel;
     ActivityAddAndEditAccountBinding binding;
+    Bundle bundle;
+    String activityAddAndEditAccountEditTextName, activityAddAndEditAccountEditTextPassword;
     //endregion
 
+    //region Life Cycle
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
+        setTitle("Add Note");
+
         binding = ActivityAddAndEditAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         addAndEditAccountViewModel = new ViewModelProvider(this).get(AddAndEditAccountViewModel.class);
@@ -69,6 +74,16 @@ public class AddAndEditAccountActivity extends AppCompatActivity {
             }
         });
 
+        bundle = getIntent().getExtras();
 
+        binding.activityAddAndEditAccountEditTextName.setText(bundle.getString("name"));
+        binding.activityAddAndEditAccountEditTextPassword.setText(bundle.getString("password"));
+
+        if (bundle.getInt("role") == 0)
+            binding.activityAddAndEditAccountRadioButtonAdmin.isChecked();
+
+        else
+            binding.activityAddAndEditAccountRadioButtonUser.isChecked();
     }
+    //endregion
 }
