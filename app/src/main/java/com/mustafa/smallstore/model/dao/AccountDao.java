@@ -28,4 +28,8 @@ public interface AccountDao {
 
     @Query("Select * from account_table where name =:name  order by name")
     LiveData<List<AccountEntity>> getAccountsByName(String name);
+
+    @Query("SELECT * FROM ACCOUNT_TABLE WHERE name =:name and password =:password")
+    LiveData<List<AccountEntity>> login(String name, String password);
+
 }

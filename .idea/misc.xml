@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/add_image_button.xml" value="0.1405" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/background_edit_text.xml" value="0.211" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/background_recycler_view.xml" value="0.2265" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/border_edit_text.xml" value="0.1695" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/btn_rounded_for_new_account.xml" value="0.1405" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/edit_text_background.xml" value="0.1405" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/ic_baseline_add.xml" value="0.1405" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/ic_floating_action_btn_add.xml" value="0.1405" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/ic_home.xml" value="0.169" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/login_button_bk.xml" value="0.152" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/logo_btn_rounded_primary.xml" value="0.2215" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/rounded_image.xml" value="0.1405" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/shape_circle.xml" value="0.2125" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/tab_color.xml" value="0.169" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/activity_account.xml" value="0.152" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/activity_add_and_edit_account.xml" value="0.2" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/activity_main_steppers.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/activity_splash.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/activity_stepper_light.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/activity_stepper_wizard_light.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/activity_welcome_after_stepper.xml" value="0.2" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/fragment_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/fragment_category.xml" value="0.24010416666666667" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/item_recycler_view_account.xml" value="0.264" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/item_stepper_light.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/item_stepper_wizard_light.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/layout_login.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/progress_button.xml" value="0.2" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/steppers_slider_for_view_pager.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/test.xml" value="0.2" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
