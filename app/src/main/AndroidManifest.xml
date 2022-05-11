@@ -12,12 +12,14 @@
         <activity
             android:name=".view.account.addandeditaccount.AddAndEditAccountActivity"
             android:exported="true"
-            android:theme="@style/Theme.SmallStore" />
+            android:theme="@style/Theme.SmallStore">
+
+
+        </activity>
         <activity
             android:name=".view.login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.SmallStore">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

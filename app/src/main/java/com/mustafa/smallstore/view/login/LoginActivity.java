@@ -9,19 +9,14 @@ import androidx.core.splashscreen.SplashScreen;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.mustafa.smallstore.databinding.ActivityLoginBinding;
-import com.mustafa.smallstore.model.entity.AccountEntity;
 import com.mustafa.smallstore.view.dashboard.MainActivity;
 import com.mustafa.smallstore.view.stepper.Tools;
-
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
     //region Component
     ActivityLoginBinding binding;
-    List<AccountEntity> accountEntityList;
     LoginViewModel loginViewModel;
-    AccountEntity accountEntity;
     //endregion
 
     //region Life Cycle
@@ -36,31 +31,26 @@ public class LoginActivity extends AppCompatActivity {
 
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
-        binding.activityLoginProgressButtonLogin.cardView.setOnClickListener(view -> {
-            String Name, Password;
+        binding.activityLoginProgressButtonLogin.cardView.setOnClickListener(view ->
+        {
+            if (binding.activityLoginTextInputEditTextUsername.getText() == null || binding.activityLoginTextInputEditTextPassword.getText() == null) {
+                binding.activityLoginTextInputEditTextUsername.setError("Please Fill The User Name");
+                binding.activityLoginTextInputEditTextPassword.setError("Please Fill The Password");
+            } else {
 
-            Name = binding.activityLoginTextInputEditTextUsername.getText().toString().trim();
-            Password = binding.activityLoginTextInputEditTextPassword.getText().toString().trim();
+                loginViewModel.login(binding.activityLoginTextInputEditTextUsername.getText().toString().trim(),
+                        binding.activityLoginTextInputEditTextPassword.getText().toString().trim())
+                        .observe(this, accountEntityList ->
+                        {
+                            if (accountEntityList.size() != 0) {
+                                Intent intent = new Intent(this, MainActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(this, "The Name : " + binding.activityLoginTextInputEditTextUsername.getText().toString() + " And " + "Password" + "  " + binding.activityLoginTextInputEditTextPassword.getText().toString() + "Note Found", Toast.LENGTH_SHORT).show();
+                            }
 
-            binding.activityLoginProgressButtonLogin.cardView.setOnClickListener(view1 ->
-            {
-
-                if (Name != null) {
-                    binding.activityLoginTextInputEditTextUsername.setError("Please Enter Your Name Address");
-                } else if (Password != null) {
-                    binding.activityLoginTextInputEditTextPassword.setError("Please Enter Your Password");
-                } else {
-                    if (accountEntityList.contains(accountEntity.getName() == Name) && accountEntityList.contains(accountEntity.getPassword() == Password)) {
-                        Intent intent = new Intent(this, MainActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-
-            });
-
+                        });
+            }
         });
 
     }
