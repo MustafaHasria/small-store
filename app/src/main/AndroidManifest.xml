@@ -12,29 +12,33 @@
         <activity
             android:name=".view.account.addandeditaccount.AddAndEditAccountActivity"
             android:exported="true"
-            android:theme="@style/Theme.SmallStore" />
+            android:theme="@style/Theme.SmallStore">
+
+
+        </activity>
         <activity
             android:name=".view.login.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.SmallStore" />
-        <activity
-            android:name=".view.stepper.StepperLightActivity"
-            android:exported="true"></activity>
-        <activity
-            android:name=".view.account.AccountActivity"
-            android:exported="true">
-
+            android:theme="@style/Theme.SmallStore">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-
         </activity>
+        <activity
+            android:name=".view.stepper.StepperLightActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".view.account.AccountActivity"
+            android:exported="true" />
+
         <activity
             android:name=".view.dashboard.MainActivity"
             android:exported="true" />
+
     </application>
 
 </manifest>
