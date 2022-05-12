@@ -1,4 +1,4 @@
-package com.mustafa.smallstore.view.account;
+package com.mustafa.smallstore.view.main.account;
 
 import android.app.Application;
 

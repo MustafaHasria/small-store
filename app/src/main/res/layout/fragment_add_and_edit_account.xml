@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    tools:context=".view.account.addandeditaccount.AddAndEditAccountActivity">
+    android:background="@android:color/white"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:weightSum="10">
 
             <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/activity_add_and_edit_account_image_user"
+                android:id="@+id/fragment_add_and_edit_account_image_user"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
@@ -34,22 +34,22 @@
                 cardview:riv_corner_radius="35dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/activity_add_and_edit_account_button_choose_picture"
+                android:id="@+id/fragment_add_and_edit_account_button_choose_picture"
                 android:layout_width="200dp"
-                android:layout_height="1dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="85sp"
                 android:layout_marginTop="20sp"
                 android:layout_marginBottom="20sp"
-                android:layout_weight="6"
                 android:background="@drawable/add_image_button"
                 android:elevation="200dp"
+                android:gravity="center"
                 android:text="Add Picture"
                 android:textColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/activity_add_and_edit_account_edit_text_name"
+            android:id="@+id/fragment_add_and_edit_account_edit_text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -64,7 +64,7 @@
             tools:ignore="RtlSymmetry" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/activity_add_and_edit_account_edit_text_password"
+            android:id="@+id/fragment_add_and_edit_account_edit_text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20sp"
@@ -93,7 +93,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/activity_add_and_edit_account_radio_button_admin"
+                    android:id="@+id/fragment_add_and_edit_account_radio_button_admin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20sp"
@@ -103,7 +103,7 @@
                     android:textColor="@color/blue_600" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/activity_add_and_edit_account_radio_button_user"
+                    android:id="@+id/fragment_add_and_edit_account_radio_button_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/product_sans_regular"
@@ -118,7 +118,7 @@
 
 
         <include
-            android:id="@+id/activity_add_and_edit_account_myProgressButton"
+            android:id="@+id/fragment_add_and_edit_account_myProgressButton"
             layout="@layout/progress_button"
             android:layout_width="match_parent"
             android:layout_height="23dp"

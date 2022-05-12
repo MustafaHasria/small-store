@@ -9,7 +9,7 @@ import androidx.core.splashscreen.SplashScreen;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.mustafa.smallstore.databinding.ActivityLoginBinding;
-import com.mustafa.smallstore.view.dashboard.MainActivity;
+import com.mustafa.smallstore.view.main.MainActivity;
 import com.mustafa.smallstore.view.stepper.Tools;
 
 public class LoginActivity extends AppCompatActivity {
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
 
                 loginViewModel.login(binding.activityLoginTextInputEditTextUsername.getText().toString().trim(),
-                        binding.activityLoginTextInputEditTextPassword.getText().toString().trim())
+                                binding.activityLoginTextInputEditTextPassword.getText().toString().trim())
                         .observe(this, accountEntityList ->
                         {
                             if (accountEntityList.size() != 0) {

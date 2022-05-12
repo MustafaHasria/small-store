@@ -1,13 +1,13 @@
-package com.mustafa.smallstore.view.dashboard.adapter;
+package com.mustafa.smallstore.view.main;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.mustafa.smallstore.view.dashboard.fragment.AccountFragment;
-import com.mustafa.smallstore.view.dashboard.fragment.CategoryFragment;
-import com.mustafa.smallstore.view.dashboard.fragment.ProductFragment;
+import com.mustafa.smallstore.view.main.account.AccountFragment;
+import com.mustafa.smallstore.view.main.fragment.CategoryFragment;
+import com.mustafa.smallstore.view.main.fragment.ProductFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 

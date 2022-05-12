@@ -1,4 +1,4 @@
-package com.mustafa.smallstore.view.dashboard;
+package com.mustafa.smallstore.view.main;
 
 import android.os.Bundle;
 
@@ -9,7 +9,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mustafa.smallstore.R;
 import com.mustafa.smallstore.databinding.ActivityMainBinding;
-import com.mustafa.smallstore.view.dashboard.adapter.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
