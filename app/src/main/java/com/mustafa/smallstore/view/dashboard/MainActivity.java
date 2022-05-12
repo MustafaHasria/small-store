@@ -15,12 +15,14 @@ public class MainActivity extends AppCompatActivity {
 
     //region Component
     ActivityMainBinding binding;
+    private BottomNavigationView bottomNavigation;
+    //endregion
+
     //region Variable
     ViewPagerAdapter viewPagerAdapter;
     private ViewPager mainViewPager;
     //endregion
-    private BottomNavigationView bottomNavigation;
-    //endregion
+
 
     //region Life Cycle
     @Override

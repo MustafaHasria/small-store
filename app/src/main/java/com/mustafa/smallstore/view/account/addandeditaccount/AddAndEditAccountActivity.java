@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -29,6 +31,63 @@ public class AddAndEditAccountActivity extends AppCompatActivity {
     Bitmap bitmap;
     //endregion
 
+    TextWatcher textWatcher = new TextWatcher() {
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            addAndEditAccountViewModel.getAccountsByName(binding.activityAddAndEditAccountEditTextName.getText().toString()).observe(this, accountEntityList ->
+            {
+                if (accountEntityList.equals(binding.activityAddAndEditAccountEditTextName.getText().toString())) {
+                    binding.activityAddAndEditAccountEditTextName.setError("change name");
+                }
+            });
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    //endregion
+
+    //region On activity result
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            Uri uri = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            binding.activityAddAndEditAccountImageUser.setImageBitmap(bitmap);
+        }
+    }
+
+    //endregion
+
+    //region Methods
+    private void chooseImage() {
+        Intent galleryIntent = new Intent();
+        galleryIntent.setType("image/*");
+        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(galleryIntent, "choose picture"), 1);
+    }
+
+    private byte[] bitmapToByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
+    }
+
     //region Life Cycle
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +97,10 @@ public class AddAndEditAccountActivity extends AppCompatActivity {
 
         binding = ActivityAddAndEditAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.activityAddAndEditAccountEditTextName.addTextChangedListener(textWatcher);
+
+
         addAndEditAccountViewModel = new ViewModelProvider(this).get(AddAndEditAccountViewModel.class);
         bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -92,39 +155,6 @@ public class AddAndEditAccountActivity extends AppCompatActivity {
         binding.activityAddAndEditAccountButtonChoosePicture.setOnClickListener(view1 -> {
             chooseImage();
         });
-    }
-
-    //endregion
-
-    //region On activity result
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            Uri uri = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            binding.activityAddAndEditAccountImageUser.setImageBitmap(bitmap);
-        }
-    }
-
-    //endregion
-
-    //region Methods
-    private void chooseImage() {
-        Intent galleryIntent = new Intent();
-        galleryIntent.setType("image/*");
-        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(galleryIntent, "choose picture"), 1);
-    }
-
-    private byte[] bitmapToByteArray(Bitmap bitmap) {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 70, byteArrayOutputStream);
-        return byteArrayOutputStream.toByteArray();
     }
     //endregion
 }
