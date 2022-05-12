@@ -41,9 +41,10 @@ public class AddAndEditAccountActivity extends AppCompatActivity {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            addAndEditAccountViewModel.getAccountsByName(binding.activityAddAndEditAccountEditTextName.getText().toString()).observe(this, accountEntityList ->
+            addAndEditAccountViewModel.getAccountsByName(binding.activityAddAndEditAccountEditTextName.getText().toString()).observe(AddAndEditAccountActivity.this, accountEntityList ->
             {
-                if (accountEntityList.equals(binding.activityAddAndEditAccountEditTextName.getText().toString())) {
+
+                if (accountEntityList.size() != 0 && accountEntityList.get(0).getName().equals(binding.activityAddAndEditAccountEditTextName.getText().toString())) {
                     binding.activityAddAndEditAccountEditTextName.setError("change name");
                 }
             });
