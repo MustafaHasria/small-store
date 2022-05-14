@@ -38,6 +38,7 @@ public class AccountFragment extends Fragment implements AccountAdapter.AccountO
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         binding = FragmentAccountBinding.bind(view);
+        //initialize for accountEntityList
         accountEntityList = new ArrayList<>();
         //مشان نعمل initialize لل ViewModel
         accountViewModel = new ViewModelProvider(this).get(AccountViewModel.class);
@@ -62,14 +63,17 @@ public class AccountFragment extends Fragment implements AccountAdapter.AccountO
                 Toast.makeText(getContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(binding.activityAccountRecyclerViewMain);
+
+
         binding.activityAccountFloatingActionButton.setOnClickListener(view1 -> {
+
             AddAndEditAccountFragment addAndEditAccountFragment = new AddAndEditAccountFragment();
             FragmentTransaction fragmentTransaction =
                     requireActivity().getSupportFragmentManager().beginTransaction();
 
             fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                    .add(R.id.mustafa, addAndEditAccountFragment, "ADD_AND_EDIT_ACCOUNT_FRAGMENT")
-                    .addToBackStack("fasdf")
+                    .add(R.id.main_activity_frame_layout, addAndEditAccountFragment, "ADD_AND_EDIT_ACCOUNT_FRAGMENT")
+                    .addToBackStack("fasdff")
                     .commit();
         });
         return view;
@@ -88,15 +92,23 @@ public class AccountFragment extends Fragment implements AccountAdapter.AccountO
     //region Interface
     @Override
     public void onAccountItemCardMainContainerClickListener(AccountEntity accountEntity) {
+
+        AddAndEditAccountFragment addAndEditAccountFragment = new AddAndEditAccountFragment();
         bundle = new Bundle();
+        FragmentTransaction fragmentTransaction =
+                requireActivity().getSupportFragmentManager().beginTransaction();
+
         bundle.putInt("id", accountEntity.getId());
         bundle.putString("name", accountEntity.getName());
         bundle.putString("password", accountEntity.getPassword());
         bundle.putInt("role", accountEntity.getRole());
-        //todo move to add and edit account
-//        Intent intent = new Intent(AccountActivity.this, AddAndEditAccountActivity.class);
-//        intent.putExtras(bundle);
-//        startActivity(intent);
+
+        addAndEditAccountFragment.setArguments(bundle);
+
+        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                .add(R.id.main_activity_frame_layout, addAndEditAccountFragment, "ADD_AND_EDIT_ACCOUNT_FRAGMENT")
+                .addToBackStack("fasdf")
+                .commit();
     }
     //endregion
 

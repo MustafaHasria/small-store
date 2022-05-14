@@ -10,7 +10,7 @@
         android:background="#ECF0F1">
 
         <FrameLayout
-            android:id="@+id/mustafa"
+            android:id="@+id/main_activity_frame_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/main_activity_bottom_navigation">

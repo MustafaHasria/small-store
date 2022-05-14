@@ -38,6 +38,7 @@ public class AddAndEditAccountFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add_and_edit_account, container, false);
         binding = FragmentAddAndEditAccountBinding.bind(view);
 
+        //Validate Name
         binding.fragmentAddAndEditAccountEditTextName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -48,10 +49,13 @@ public class AddAndEditAccountFragment extends Fragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 addAndEditAccountViewModel.getAccountsByName(binding.fragmentAddAndEditAccountEditTextName.getText().toString()).observe(getViewLifecycleOwner(), accountEntityList ->
                 {
-                    if (accountEntityList.size() != 0 &&
-                            accountEntityList.get(0).getName().equals(binding.fragmentAddAndEditAccountEditTextName.getText().toString())) {
-                        binding.fragmentAddAndEditAccountEditTextName.setError("This name is used");
+                    if (bundle == null) {
+                        if (accountEntityList.size() != 0 &&
+                                accountEntityList.get(0).getName().equals(binding.fragmentAddAndEditAccountEditTextName.getText().toString())) {
+                            binding.fragmentAddAndEditAccountEditTextName.setError("This name is used");
+                        }
                     }
+
                 });
             }
 
@@ -63,6 +67,7 @@ public class AddAndEditAccountFragment extends Fragment {
 
 
         addAndEditAccountViewModel = new ViewModelProvider(this).get(AddAndEditAccountViewModel.class);
+
         bundle = getArguments();
         if (bundle != null) {
             binding.fragmentAddAndEditAccountMyProgressButton.textView.setText("Update");

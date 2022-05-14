@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.mustafa.smallstore.view.main.account.AccountFragment;
 import com.mustafa.smallstore.view.main.fragment.CategoryFragment;
-import com.mustafa.smallstore.view.main.fragment.ProductFragment;
+import com.mustafa.smallstore.view.main.product.ProductFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
