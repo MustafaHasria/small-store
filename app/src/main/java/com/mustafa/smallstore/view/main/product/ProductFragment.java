@@ -40,8 +40,8 @@ public class ProductFragment extends Fragment {
 
 
             AddAndEditProduct addAndEditProduct = new AddAndEditProduct();
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_product_frame_layout, addAndEditProduct, "findThisFragment")
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.main_activity_frame_layout, addAndEditProduct, "findThisFragment")
                     .addToBackStack(null)
                     .commit();
         });
