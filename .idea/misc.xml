@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable-v24/btn_filter_background.xml" value="0.1645" />
         <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/add_image_button.xml" value="0.1405" />
         <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/background_edit_text.xml" value="0.211" />
         <entry key="..\:/Android App Offline/Small Store/app/src/main/res/drawable/background_recycler_view.xml" value="0.2265" />
@@ -27,7 +28,10 @@
         <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/activity_stepper_wizard_light.xml" value="0.27447916666666666" />
         <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/activity_welcome_after_stepper.xml" value="0.2" />
         <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/fragment_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/fragment_add_and_edit_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/fragment_add_and_edit_product.xml" value="0.25416666666666665" />
         <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/fragment_category.xml" value="0.24010416666666667" />
+        <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/fragment_product.xml" value="0.25416666666666665" />
         <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/item_recycler_view_account.xml" value="0.264" />
         <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/item_stepper_light.xml" value="0.27447916666666666" />
         <entry key="..\:/Android App Offline/Small Store/app/src/main/res/layout/item_stepper_wizard_light.xml" value="0.27447916666666666" />
