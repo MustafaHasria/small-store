@@ -3,9 +3,13 @@ package com.mustafa.smallstore.repository;
 import android.app.Application;
 import android.os.AsyncTask;
 
+import androidx.lifecycle.LiveData;
+
 import com.mustafa.smallstore.model.dao.ProductDao;
 import com.mustafa.smallstore.model.database.SmallStoreDatabase;
 import com.mustafa.smallstore.model.entity.ProductEntity;
+
+import java.util.List;
 
 public class ProductRepository {
 
@@ -32,6 +36,11 @@ public class ProductRepository {
     public void delete(ProductEntity productEntity) {
         new DeleteProductTask(productDao).execute(productEntity);
     }
+
+    public LiveData<List<ProductEntity>> getAllProducts() {
+        return productDao.getProducts();
+    }
+
     //endregion
 
     //region Async tasks

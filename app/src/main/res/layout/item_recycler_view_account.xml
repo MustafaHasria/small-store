@@ -1,81 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/item_to_recycler_view_constraint_layout_parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:layout_margin="8dp">
 
-    <RelativeLayout
-        android:id="@+id/item_to_recycler_view_relative_layout"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_to_recycler_view_constraint_layout_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:background="@drawable/background_recycler_view"
-        android:backgroundTint="@color/white"
-        android:paddingBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:background="@color/white">
 
-        <TextView
-            android:id="@+id/item_to_recycler_view_text_view_name"
-            android:layout_width="250dp"
+        <RelativeLayout
+            android:id="@+id/item_to_recycler_view_relative_layout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:singleLine="true"
-            android:text="Tarek Hindi"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold" />
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/background_recycler_view"
+            android:backgroundTint="@color/white"
+            android:paddingBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/item_to_recycler_view_text_view_password_and_role"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/item_to_recycler_view_text_view_name"
-            android:layout_alignStart="@+id/item_to_recycler_view_text_view_name"
-            android:layout_alignLeft="@+id/item_to_recycler_view_text_view_name"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:lineSpacingExtra="8dp"
-            android:maxLines="1"
-            android:fontFamily="@font/product_sans_regular"
-            android:text="here is the Role And Password"
-            android:textColor="@color/text" />
+            <TextView
+                android:id="@+id/item_to_recycler_view_text_view_name"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:singleLine="true"
+                android:text="Tarek Hindi"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/item_to_recycler_view_text_view_password_and_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_to_recycler_view_text_view_name"
+                android:layout_alignStart="@+id/item_to_recycler_view_text_view_name"
+                android:layout_alignLeft="@+id/item_to_recycler_view_text_view_name"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:fontFamily="@font/product_sans_regular"
+                android:lineSpacingExtra="8dp"
+                android:maxLines="1"
+                android:text="here is the Role And Password"
+                android:textColor="@color/text" />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/item_to_recycler_view_image_user"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/item_to_recycler_view_relative_layout"
-        app:layout_constraintStart_toStartOf="@+id/item_to_recycler_view_relative_layout"
-        app:layout_constraintTop_toTopOf="@+id/item_to_recycler_view_relative_layout"
-        app:riv_corner_radius="30dip"
-        app:srcCompat="@mipmap/ic_launcher" />
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/item_to_recycler_view_image_user"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/item_to_recycler_view_relative_layout"
+            app:layout_constraintStart_toStartOf="@+id/item_to_recycler_view_relative_layout"
+            app:layout_constraintTop_toTopOf="@+id/item_to_recycler_view_relative_layout"
+            app:riv_corner_radius="30dip"
+            app:srcCompat="@mipmap/ic_launcher" />
 
-    <View
-        android:id="@+id/item_to_recycler_view_view"
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toBottomOf="@id/item_to_recycler_view_relative_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/login_button_bk"
-        app:layout_constraintStart_toStartOf="@id/item_to_recycler_view_relative_layout" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/item_to_recycler_view_view"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/login_button_bk"
+            app:layout_constraintBottom_toBottomOf="@id/item_to_recycler_view_relative_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/item_to_recycler_view_relative_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

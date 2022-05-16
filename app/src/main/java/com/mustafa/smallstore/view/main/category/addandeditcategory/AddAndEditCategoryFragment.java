@@ -1,4 +1,4 @@
-package com.mustafa.smallstore.view.main.fragment;
+package com.mustafa.smallstore.view.main.category.addandeditcategory;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,17 +9,18 @@ import androidx.fragment.app.Fragment;
 
 import com.mustafa.smallstore.R;
 
-public class CategoryFragment extends Fragment {
+public class AddAndEditCategoryFragment extends Fragment {
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    public CategoryFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false);
+        return inflater.inflate(R.layout.fragment_add_and_edit_category, container, false);
     }
 }
