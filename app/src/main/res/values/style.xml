@@ -38,4 +38,8 @@
         <item name="colorControlHighlight">@color/grey_60</item>
         <item name="colorControlNormal">@color/grey_40</item>
     </style>
+
+
+    //for toolbar in fragmentAddAndEditProduct
+
 </resources>

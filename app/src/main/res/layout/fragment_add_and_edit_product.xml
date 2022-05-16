@@ -1,8 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/black"
     android:layout_height="match_parent"
-    tools:context=".view.main.product.addandeditproduct.AddAndEditProduct">
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:id="@+id/fragment_add_and_edit_product_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/fragment_add_and_edit_product_edit_text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_text_background"
+                android:fontFamily="@font/product_sans_regular"
+                android:hint="Name"
+                android:padding="15sp" />
+
+            <EditText
+                android:id="@+id/fragment_add_and_edit_product_edit_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_text_background"
+                android:fontFamily="@font/product_sans_regular"
+                android:hint="price"
+                android:inputType="number"
+                android:padding="15sp" />
+
+            <EditText
+                android:id="@+id/fragment_add_and_edit_product_edit_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_text_background"
+                android:fontFamily="@font/product_sans_regular"
+                android:hint="Quantity"
+                android:inputType="number"
+                android:padding="15sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fragment_add_and_edit_product_text_input_layout_category"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginEnd="16sp"
+                android:hint="Category">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/fragment_add_and_edit_product_text_input_edit_text_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fragment_add_and_edit_product_text_input_layout_made_in"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginEnd="16sp"
+                android:hint="Made in">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/fragment_add_and_edit_product_text_input_edit_text_made_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fragment_add_and_edit_product_button_date_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20sp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Choose Date"
+                android:textColor="@color/colorPrimaryDark" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
 </FrameLayout>

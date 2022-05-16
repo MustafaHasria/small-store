@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.mustafa.smallstore.R;
 import com.mustafa.smallstore.databinding.FragmentProductBinding;
-import com.mustafa.smallstore.view.main.product.addandeditproduct.AddAndEditProduct;
+import com.mustafa.smallstore.view.main.product.addandeditproduct.AddAndEditProductFragment;
 
 
 public class ProductFragment extends Fragment {
@@ -39,9 +39,9 @@ public class ProductFragment extends Fragment {
 //                    .commit();
 
 
-            AddAndEditProduct addAndEditProduct = new AddAndEditProduct();
+            AddAndEditProductFragment addAndEditProductFragment = new AddAndEditProductFragment();
             requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.main_activity_frame_layout, addAndEditProduct, "findThisFragment")
+                    .replace(R.id.main_activity_frame_layout, addAndEditProductFragment, "findThisFragment")
                     .addToBackStack(null)
                     .commit();
         });
