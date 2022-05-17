@@ -3,10 +3,10 @@ package com.mustafa.smallstore.view.main.category;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mustafa.smallstore.R;
@@ -69,13 +69,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     //region View holder
     public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        CardView itemRecyclerViewCategoryCardViewMainContainer;
+        LinearLayout itemRecyclerViewCategoryCardViewMainContainer;
         TextView itemRecyclerViewCategoryTextViewName;
         //View itemToRecyclerViewView;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemRecyclerViewCategoryCardViewMainContainer = itemView.findViewById(R.id.item_recycler_view_category_card_view_main_container);
+            itemRecyclerViewCategoryCardViewMainContainer = itemView.findViewById(R.id.item_recycler_view_Linear_layout_view_main_container);
             itemRecyclerViewCategoryTextViewName = itemView.findViewById(R.id.item_recycler_view_category_text_view_name);
 
         }

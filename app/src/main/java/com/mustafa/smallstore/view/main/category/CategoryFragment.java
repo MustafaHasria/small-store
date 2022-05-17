@@ -17,12 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mustafa.smallstore.R;
 import com.mustafa.smallstore.databinding.FragmentCategoryBinding;
 import com.mustafa.smallstore.model.entity.CategoryEntity;
-import com.mustafa.smallstore.view.main.account.addandeditaccount.AddAndEditAccountFragment;
+import com.mustafa.smallstore.view.main.category.addandeditcategory.AddAndEditCategoryFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryFragment extends Fragment implements CategoryAdapter.CategoryOnClickListener {
+
     //region Variables
     CategoryViewModel categoryViewModel;
     CategoryAdapter categoryAdapter;
@@ -32,9 +33,7 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
     //endregion
 
 
-    public CategoryFragment() {
-    }
-
+    //region Life Cycle
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,17 +63,20 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
 
         setupRecyclerView();
 
-        binding.fragmentCategoryFloatingActionButtonAddCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AddAndEditAccountFragment addAndEditAccountFragment = new AddAndEditAccountFragment();
-                bundle = new Bundle();
-                FragmentTransaction fragmentTransaction =
-                        requireActivity().getSupportFragmentManager().beginTransaction();
-            }
+        //when click action button for move to another fragment
+        binding.fragmentCategoryFloatingActionButtonAddCategory.setOnClickListener(view1 ->
+        {
+            AddAndEditCategoryFragment addAndEditCategoryFragment = new AddAndEditCategoryFragment();
+
+            FragmentTransaction fragmentTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
+
+            fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                    .add(R.id.main_activity_frame_layout, addAndEditCategoryFragment, "ADD_AND_EDIT_CATEGORY_FRAGMENT")
+                    .addToBackStack("dsf").commit();
         });
         return view;
     }
+    //endregion
 
 
     //region Setup
@@ -87,10 +89,25 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
 
     //endregion
 
+
     //region Adapter click listener
     @Override
     public void onItemRecyclerViewCategoryCardViewMainContainerClickListener(CategoryEntity categoryEntity) {
 
+        AddAndEditCategoryFragment andEditCategoryFragment = new AddAndEditCategoryFragment();
+        bundle = new Bundle();
+        FragmentTransaction fragmentTransaction =
+                requireActivity().getSupportFragmentManager().beginTransaction();
+
+        bundle.putInt("id", categoryEntity.getId());
+        bundle.putString("name", categoryEntity.getName());
+
+        andEditCategoryFragment.setArguments(bundle);
+
+        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                .add(R.id.main_activity_frame_layout, andEditCategoryFragment, "ADD_AND_EDIT_CATEGORY_FRAGMENT")
+                .addToBackStack("fasdf")
+                .commit();
     }
     //endregion
 }

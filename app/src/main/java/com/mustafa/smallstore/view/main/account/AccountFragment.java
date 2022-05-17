@@ -71,7 +71,7 @@ public class AccountFragment extends Fragment implements AccountAdapter.AccountO
             FragmentTransaction fragmentTransaction =
                     requireActivity().getSupportFragmentManager().beginTransaction();
 
-            fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .add(R.id.main_activity_frame_layout, addAndEditAccountFragment, "ADD_AND_EDIT_ACCOUNT_FRAGMENT")
                     .addToBackStack("fasdff")
                     .commit();

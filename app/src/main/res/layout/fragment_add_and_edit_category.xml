@@ -1,14 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_add_and_edit_category_edit_frame_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.main.category.addandeditcategory.AddAndEditCategoryFragment">
+    android:background="@color/whiteCardColor">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/fragment_add_and_edit_category_edit_relative_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/fragment_add_and_edit_category_edit_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/fragment_add_and_edit_category_edit_rounded_image_category_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16sp"
+                android:background="@drawable/rounded_image"
+                android:elevation="20sp"
+                android:scaleType="centerCrop" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fragment_add_and_edit_category_edit_button_choose_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Choose Image"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/fragment_add_and_edit_category_edit_edit_text_category_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20sp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16sp"
+                android:background="@drawable/edit_text_background"
+                android:fontFamily="@font/product_sans_regular"
+                android:hint="Name"
+                android:padding="15sp" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/fragment_add_and_edit_category_edit_parent_category_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20sp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20sp"
+                android:background="@drawable/edit_text_background"
+                android:fontFamily="@font/product_sans_regular"
+                android:hint="Parent Category Id"
+                android:inputType="number"
+                android:padding="15sp" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fragment_add_and_edit_category_edit_button_add_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16sp"
+                android:background="@drawable/logo_btn_rounded_primary"
+                android:gravity="center"
+                android:text="Add Category"
+                android:textColor="@color/whiteCardColor"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
 </FrameLayout>

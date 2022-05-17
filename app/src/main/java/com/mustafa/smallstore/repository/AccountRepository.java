@@ -50,6 +50,7 @@ public class AccountRepository {
     }
     //endregion
 
+
     //region Async tasks
     private static class InsertAccountTask extends AsyncTask<AccountEntity, Void, Void> {
         //region Variables

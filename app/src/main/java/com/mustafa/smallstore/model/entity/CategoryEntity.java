@@ -23,7 +23,6 @@ public class CategoryEntity {
     //endregion
 
     //region Constructor
-
     public CategoryEntity(String name, byte[] image, int parentCategoryId) {
         this.name = name;
         this.image = image;

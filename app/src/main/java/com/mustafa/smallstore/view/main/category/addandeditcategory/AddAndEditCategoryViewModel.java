@@ -1,37 +1,33 @@
-package com.mustafa.smallstore.view.main.category;
+package com.mustafa.smallstore.view.main.category.addandeditcategory;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 
 import com.mustafa.smallstore.model.entity.CategoryEntity;
 import com.mustafa.smallstore.repository.CategoryRepository;
 
-import java.util.List;
+public class AddAndEditCategoryViewModel extends AndroidViewModel {
 
-public class CategoryViewModel extends AndroidViewModel {
-
-    //region Variables
+    //region Repository
     CategoryRepository categoryRepository;
     //endregion
 
     //region Constructor
-    public CategoryViewModel(@NonNull Application application) {
+    public AddAndEditCategoryViewModel(@NonNull Application application) {
         super(application);
         categoryRepository = new CategoryRepository(application);
     }
     //endregion
 
     //region Methods
-
-    public void delete(CategoryEntity categoryEntity) {
-        categoryRepository.delete(categoryEntity);
+    public void insert(CategoryEntity categoryEntity) {
+        categoryRepository.insert(categoryEntity);
     }
 
-    public LiveData<List<CategoryEntity>> getAllCategories() {
-        return categoryRepository.getAllCategories();
+    public void update(CategoryEntity categoryEntity) {
+        categoryRepository.update(categoryEntity);
     }
     //endregion
 }
