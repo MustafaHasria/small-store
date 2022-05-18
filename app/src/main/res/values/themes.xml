@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.SmallStore" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.SmallStore" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -42,8 +42,16 @@
 
 
     //region For Stepper
+
     <style name="TextAppearance.Subhead.Bold" parent="@style/TextAppearance.AppCompat.Subhead">
         <item name="android:textStyle">bold</item>
+    </style>
+    //endregion
+
+    //region For Date Picker (Start and End)
+
+    <style name="CustomTabTextBold" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">16sp</item>
     </style>
     //endregion
 

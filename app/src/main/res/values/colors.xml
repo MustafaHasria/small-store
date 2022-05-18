@@ -58,4 +58,30 @@
 
     <color name="colorEditText">#14000000</color>
 
+    //Number Picker (product)
+    <color name="colorAccent">#1565C0</color>
+
+
+    //Date Picker (Start and End Date)
+    /for date (shape drawable)
+    <color name="colorAccents">#FF4081</color>
+
+    <color name="colorPrimarys">#3F51B5</color>
+    <color name="colorPrimaryDarks">#303F9F</color>
+
+    <color name="purpule">#85619F</color>
+    <color name="purpule_light">#8085619F</color>
+    <color name="pink_light">#8Ee41e53</color>
+    <color name="greens">#5d9426</color>
+
+
+    <color name="current">#4b82ff</color>
+    <color name="greys">#c7c7c7</color>
+    <color name="whites">#fff</color>
+    <color name="blacks">#000</color>
+    <color name="grey_lighter">#bcbcbc</color>
+    <color name="grey_drak">#d7666666</color>
+    <color name="line_lighter_grey">#dedede</color>
+    <color name="line_light_greys">#d7a7a7a7</color>
+
 </resources>

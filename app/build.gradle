@@ -56,4 +56,7 @@ dependencies {
     //Rounded Image
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
+    //number picker
+    implementation 'io.github.ShawnLin013:number-picker:2.4.13'
+
 }

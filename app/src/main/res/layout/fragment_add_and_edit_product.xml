@@ -1,113 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <RelativeLayout
-        android:id="@+id/fragment_add_and_edit_product_relative_layout"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/fragment_add_and_edit_product_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <RelativeLayout
+            android:id="@+id/fragment_add_and_edit_product_relative_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:animateLayoutChanges="true"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/fragment_add_and_edit_product_edit_text_name"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/edit_text_background"
-                android:fontFamily="@font/product_sans_regular"
-                android:hint="Name"
-                android:padding="15sp" />
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/fragment_add_and_edit_product_edit_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/edit_text_background"
-                android:fontFamily="@font/product_sans_regular"
-                android:hint="price"
-                android:inputType="number"
-                android:padding="15sp" />
-
-            <EditText
-                android:id="@+id/fragment_add_and_edit_product_edit_quantity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/edit_text_background"
-                android:fontFamily="@font/product_sans_regular"
-                android:hint="Quantity"
-                android:inputType="number"
-                android:padding="15sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/fragment_add_and_edit_product_text_input_layout_category"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="20sp"
-                android:layout_marginEnd="16sp"
-                android:hint="Category">
-
-                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/fragment_add_and_edit_product_text_input_edit_text_category"
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/fragment_add_and_edit_product_edit_text_name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:hint="Name"
+                    android:padding="15sp"
+                    android:textColor="@color/blue_600" />
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/fragment_add_and_edit_product_text_input_layout_made_in"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="20sp"
-                android:layout_marginEnd="16sp"
-                android:hint="Made in">
-
-                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/fragment_add_and_edit_product_text_input_edit_text_made_in"
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/fragment_add_and_edit_product_edit_price"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:hint="price"
+                    android:inputType="number"
+                    android:padding="15sp"
+                    android:textColor="@color/blue_600" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fragment_add_and_edit_product_text_input_layout_category"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginEnd="16sp"
+                    android:hint="Category">
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/fragment_add_and_edit_product_text_input_edit_text_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/fragment_add_and_edit_product_button_date_picker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20sp"
-                android:background="@drawable/edit_text_background"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Choose Date"
-                android:textColor="@color/colorPrimaryDark" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fragment_add_and_edit_product_text_input_layout_made_in"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginEnd="16sp"
+                    android:hint="Made in">
 
-        </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/fragment_add_and_edit_product_text_input_edit_text_made_in"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_add_and_edit_product_linear_layout_for_quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16sp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/fragment_add_and_edit_product_text_view_quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginLeft="16dp"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="Quantity"
+                        android:textColor="@color/light_gray"
+                        android:textSize="20sp" />
+
+                    <com.shawnlin.numberpicker.NumberPicker
+                        android:id="@+id/fragment_add_and_edit_product_number_picker_horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="30dp"
+                        app:np_accessibilityDescriptionEnabled="true"
+                        app:np_dividerColor="@color/colorAccent"
+                        app:np_dividerType="underline"
+                        app:np_fadingEdgeEnabled="false"
+                        app:np_height="50sp"
+                        app:np_max="100"
+                        app:np_min="0"
+                        app:np_order="ascending"
+                        app:np_orientation="horizontal"
+                        app:np_selectedTextColor="@color/colorAccent"
+                        app:np_selectedTextSize="@dimen/selected_text_size"
+                        app:np_selectedTypeface="@string/roboto_light"
+                        app:np_textColor="@color/colorAccent"
+                        app:np_textSize="@dimen/text_size"
+                        app:np_typeface="@string/roboto_light"
+                        app:np_width="150dp"
+                        app:np_wrapSelectorWheel="true" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_add_and_edit_product_linear_layout_for_offer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/fragment_add_and_edit_product_text_view_offer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="Offer"
+                        android:textColor="@color/light_gray"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/fragment_add_and_edit_product_radio_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="88dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/fragment_add_and_edit_product_radio_button_is_offer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20sp"
+                            android:fontFamily="@font/product_sans_regular"
+                            android:soundEffectsEnabled="true"
+                            android:text="Is Offer"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/fragment_add_and_edit_product_radio_button_is_not_offer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/product_sans_regular"
+                            android:soundEffectsEnabled="true"
+                            android:text="Isn't Offer"
+                            android:textColor="@color/colorPrimaryDark" />
 
 
-    </RelativeLayout>
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/fragment_add_and_edit_product_linear_layout_for_choose_date_for_offer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16sp"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/fragment_add_and_edit_product_text_view_date_offer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="Date Offer"
+                        android:textColor="@color/light_gray"
+                        android:textSize="20sp" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/fragment_add_and_edit_product_button_date_picker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="55dp"
+                        android:background="@drawable/edit_text_background"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Choose Date"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_add_and_edit_product_linear_layout_for_offer_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/fragment_add_and_edit_product_edit_offer_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/edit_text_background"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:hint="Offer Price"
+                        android:inputType="number"
+                        android:padding="15sp"
+                        android:textColor="@color/blue_600" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </FrameLayout>

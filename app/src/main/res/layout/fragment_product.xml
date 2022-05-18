@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fragment_product_frame_layout"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_product_frame_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
@@ -79,11 +79,11 @@
 
         </LinearLayout>
 
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-        <!--            android:id="@+id/fragment_product_recycler_view_product"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:layout_below="@id/fragment_product_linear_layout_filter" />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_product_recycler_view_product"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/fragment_product_linear_layout_filter" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
