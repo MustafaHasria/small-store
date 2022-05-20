@@ -10,10 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.SplashScreen">
         <activity
-            android:name=".view.datepickerstartandend.MainForDateActivity"
-            android:exported="true"
-            android:theme="@style/Theme.SmallStore" />
-        <activity
             android:name=".view.login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.SmallStore">

@@ -1,6 +1,5 @@
 package com.mustafa.smallstore.view.main.product.addandeditproduct;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,27 +10,30 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.gson.Gson;
 import com.mustafa.smallstore.R;
 import com.mustafa.smallstore.databinding.FragmentAddAndEditProductBinding;
-import com.mustafa.smallstore.view.datepickerstartandend.MainForDateActivity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class AddAndEditProductFragment extends Fragment {
 
+    private static final String TAG = "NumberPicker";
     //region Component
     FragmentAddAndEditProductBinding binding;
     AppCompatAutoCompleteTextView fragmentAddAndEditProductTextInputEditTextCategory;
-    AppCompatAutoCompleteTextView fragmentAddAndEditProductTextInputEditTextMadeIn;
     //endregion
-
+    AppCompatAutoCompleteTextView fragmentAddAndEditProductTextInputEditTextMadeIn;
     //region Variable
     ArrayList<String> nameCategoryList;
-    ArrayList<String> madeInList;
     ArrayAdapter<String> categoryAdapter;
-    ArrayAdapter<String> madeInAdapter;
-    private static String TAG = "NumberPicker";
+    ArrayAdapter<String> countryAdapter;
     AddAndEditProductViewModel addAndEditProductViewModel;
+    CountryModelJson[] countries;
     //endregion
 
     //region Life cycle
@@ -43,6 +45,8 @@ public class AddAndEditProductFragment extends Fragment {
         binding = FragmentAddAndEditProductBinding.bind(view);
         // We init this array to be sure it's not gonna take null value.
         nameCategoryList = new ArrayList<>();
+
+        //For Date Picker (Material Design)
         addAndEditProductViewModel = new ViewModelProvider(requireActivity()).get(AddAndEditProductViewModel.class);
 
         addAndEditProductViewModel.categoryRepository.getAllCategories().observe(requireActivity(), categoryEntities -> {
@@ -56,28 +60,58 @@ public class AddAndEditProductFragment extends Fragment {
             }
         });
 
-        //For Spinner And Auto Complete (madeIn)
-        madeInList = new ArrayList<>();
-        madeInList.add("SYRIA");
-        madeInList.add("UAE");
-        madeInList.add("ALGERIA");
-        madeInAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, madeInList);
-        binding.fragmentAddAndEditProductTextInputEditTextMadeIn.setAdapter(madeInAdapter);
+        //For Spinner And Auto Complete (Country)
+        Gson gson = new Gson();
+        countries = gson.fromJson(readCountryJsonFileAsString(), CountryModelJson[].class);
+        countryAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, countries);
+        binding.fragmentAddAndEditProductTextInputEditTextMadeIn.setAdapter(countryAdapter);
 
         //For first value to number picker (initialization)
 //        binding.fragmentAddAndEditProductNumberPickerHorizontal.setValue(1);
         //get data from number picker
 //        binding.fragmentAddAndEditProductNumberPickerHorizontal.setOnValueChangedListener((com.shawnlin.numberpicker.NumberPicker.OnValueChangeListener) (picker, oldVal, newVal) -> Log.d(TAG, String.format(Locale.US, "oldVal: %d, newVal: %d", oldVal, newVal)));
-        ;
 
+
+        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
+        builder.setTitleText("Select Start Offer Date");
+        final MaterialDatePicker<Long> materialDatePicker = builder.build();
+
+        //for click choose date
         binding.fragmentAddAndEditProductButtonDatePicker.setOnClickListener(view1 -> {
-            Intent intent = new Intent();
-            intent.setClass(getActivity(), MainForDateActivity.class);
-            getActivity().startActivity(intent);
+            materialDatePicker.show(requireActivity().getSupportFragmentManager(), "DATE_PICKER");
         });
+
+
         return view;
     }
 
     //endregion
 
+    //region Methods
+
+    public String readCountryJsonFileAsString() {
+        //Read File from resources package
+        InputStream XmlFileInputStream = getResources().openRawResource(R.raw.countries);
+        return readTextFile(XmlFileInputStream);
+    }
+
+    //Convert File To String
+    public String readTextFile(InputStream inputStream) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        byte[] buf = new byte[1024];
+        int len;
+        try {
+            while ((len = inputStream.read(buf)) != -1) {
+                outputStream.write(buf, 0, len);
+            }
+            outputStream.close();
+            inputStream.close();
+        } catch (IOException e) {
+
+        }
+        return outputStream.toString();
+    }
+
+
+    //endregion
 }

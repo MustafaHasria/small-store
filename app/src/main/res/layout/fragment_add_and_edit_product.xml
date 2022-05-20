@@ -116,7 +116,7 @@
                         app:np_dividerType="underline"
                         app:np_fadingEdgeEnabled="false"
                         app:np_height="50sp"
-                        app:np_max="100"
+                        app:np_max="1000"
                         app:np_min="0"
                         app:np_order="ascending"
                         app:np_orientation="horizontal"
@@ -136,51 +136,34 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="8dp">
 
-                    <TextView
-                        android:id="@+id/fragment_add_and_edit_product_text_view_offer"
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/fragment_add_and_edit_product_radio_button_is_offer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="25dp"
                         android:fontFamily="@font/product_sans_regular"
-                        android:text="Offer"
-                        android:textColor="@color/light_gray"
-                        android:textSize="20sp" />
+                        android:layoutDirection="rtl"
+                        android:soundEffectsEnabled="true"
+                        android:text="Is Offer"
+                        android:textColor="@color/colorPrimaryDark" />
 
-                    <RadioGroup
-                        android:id="@+id/fragment_add_and_edit_product_radio_group"
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/fragment_add_and_edit_product_radio_button_is_not_offer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="88dp"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.AppCompatRadioButton
-                            android:id="@+id/fragment_add_and_edit_product_radio_button_is_offer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="20sp"
-                            android:fontFamily="@font/product_sans_regular"
-                            android:soundEffectsEnabled="true"
-                            android:text="Is Offer"
-                            android:textColor="@color/colorPrimaryDark" />
-
-                        <androidx.appcompat.widget.AppCompatRadioButton
-                            android:id="@+id/fragment_add_and_edit_product_radio_button_is_not_offer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/product_sans_regular"
-                            android:soundEffectsEnabled="true"
-                            android:text="Isn't Offer"
-                            android:textColor="@color/colorPrimaryDark" />
-
-
-                    </RadioGroup>
+                        android:layout_marginLeft="30dp"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:layoutDirection="rtl"
+                        android:soundEffectsEnabled="true"
+                        android:text="New"
+                        android:textColor="@color/colorPrimaryDark" />
 
 
                 </LinearLayout>

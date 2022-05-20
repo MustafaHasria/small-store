@@ -59,4 +59,7 @@ dependencies {
     //number picker
     implementation 'io.github.ShawnLin013:number-picker:2.4.13'
 
+    //GSON
+    implementation 'com.google.code.gson:gson:2.8.8'
+
 }
