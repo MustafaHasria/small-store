@@ -6,26 +6,38 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mustafa.smallstore.R;
 import com.mustafa.smallstore.databinding.FragmentProductBinding;
 import com.mustafa.smallstore.view.main.product.addandeditproduct.AddAndEditProductFragment;
+
+import java.util.ArrayList;
 
 
 public class ProductFragment extends Fragment {
 
     //region Variables
     FragmentProductBinding binding;
+    ProductAdapter productAdapter;
+    ProductViewModel productViewModel;
     //endregion
 
+    //region Life cycle
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_product, container, false);
         binding = FragmentProductBinding.bind(view);
+        setupRecyclerView();
 
-
+        productViewModel = new ViewModelProvider(requireActivity()).get(ProductViewModel.class);
+        productViewModel.getAllProducts().observe(requireActivity(), productEntities -> {
+            productAdapter.refreshList(productEntities);
+        });
         //open addAndEditProduct Fragment
         binding.fragmentProductFloatingActionButtonAddProduct.setOnClickListener(view1 ->
         {
@@ -48,4 +60,14 @@ public class ProductFragment extends Fragment {
 
         return view;
     }
+    //endregion
+
+    //region Methods
+    private void setupRecyclerView() {
+        productAdapter = new ProductAdapter(new ArrayList<>());
+        binding.fragmentProductRecyclerViewProduct.setHasFixedSize(true);
+        binding.fragmentProductRecyclerViewProduct.setLayoutManager(new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false));
+        binding.fragmentProductRecyclerViewProduct.setAdapter(productAdapter);
+    }
+    //endregion
 }

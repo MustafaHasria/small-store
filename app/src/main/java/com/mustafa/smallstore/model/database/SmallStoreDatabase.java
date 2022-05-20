@@ -50,8 +50,8 @@ public abstract class SmallStoreDatabase extends RoomDatabase {
     public static synchronized SmallStoreDatabase getInstance(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
-                    SmallStoreDatabase.class,
-                    "small_store_database")
+                            SmallStoreDatabase.class,
+                            "small_store_database")
                     //If there are error in Migration destruct all database and rebuild it
                     .fallbackToDestructiveMigration()
                     //Want do something when database building
@@ -68,6 +68,7 @@ public abstract class SmallStoreDatabase extends RoomDatabase {
         //region Variables
         AccountDao accountDao;
         CategoryDao categoryDao;
+        ProductDao productDao;
         //endregion
 
         //region Constructor
@@ -75,6 +76,7 @@ public abstract class SmallStoreDatabase extends RoomDatabase {
         public PopulateDbAsyncTask(SmallStoreDatabase smallStoreDatabase) {
             accountDao = smallStoreDatabase.accountDao();
             categoryDao = smallStoreDatabase.categoryDao();
+            productDao = smallStoreDatabase.productDao();
         }
 
         //endregion
@@ -83,6 +85,8 @@ public abstract class SmallStoreDatabase extends RoomDatabase {
         protected Void doInBackground(Void... voids) {
             accountDao.insert(new AccountEntity("admin", null, 0, "0123"));
             categoryDao.insert(new CategoryEntity("Juice", null, 0));
+            productDao.insert(new ProductEntity("First Item for test", 200, "UAE", false, "", false,
+                    0, "", null, null, null, 1, "Juice"));
             return null;
         }
     }

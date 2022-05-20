@@ -23,13 +23,13 @@ public class ProductEntity {
     private String madeIn;
 
     @ColumnInfo(name = "is_offered")
-    private String isOffered;
+    private boolean isOffered;
 
     @ColumnInfo(name = "expire_date_offer")
     private String expireDateOffer;
 
     @ColumnInfo(name = "is_new")
-    private String isNew;
+    private boolean isNew;
 
     @ColumnInfo(name = "offer_cost")
     private double offerCost;
@@ -48,11 +48,14 @@ public class ProductEntity {
 
     @ColumnInfo(name = "category_id")
     private int categoryId;
+
+    @ColumnInfo(name = "category_name")
+    private String categoryName;
     //endregion
 
     //region Constructor
 
-    public ProductEntity(String name, double price, String madeIn, String isOffered, String expireDateOffer, String isNew, double offerCost, String qrCode, byte[] image1, byte[] image2, byte[] image3, int categoryId) {
+    public ProductEntity(String name, double price, String madeIn, boolean isOffered, String expireDateOffer, boolean isNew, double offerCost, String qrCode, byte[] image1, byte[] image2, byte[] image3, int categoryId, String categoryName) {
         this.name = name;
         this.price = price;
         this.madeIn = madeIn;
@@ -65,6 +68,7 @@ public class ProductEntity {
         this.image2 = image2;
         this.image3 = image3;
         this.categoryId = categoryId;
+        this.categoryName = categoryName;
     }
 
 
@@ -111,13 +115,6 @@ public class ProductEntity {
         this.madeIn = madeIn;
     }
 
-    public String getIsOffered() {
-        return isOffered;
-    }
-
-    public void setIsOffered(String isOffered) {
-        this.isOffered = isOffered;
-    }
 
     public String getExpireDateOffer() {
         return expireDateOffer;
@@ -127,12 +124,20 @@ public class ProductEntity {
         this.expireDateOffer = expireDateOffer;
     }
 
-    public String getIsNew() {
+    public boolean isOffered() {
+        return isOffered;
+    }
+
+    public void setOffered(boolean offered) {
+        isOffered = offered;
+    }
+
+    public boolean isNew() {
         return isNew;
     }
 
-    public void setIsNew(String isNew) {
-        this.isNew = isNew;
+    public void setNew(boolean aNew) {
+        isNew = aNew;
     }
 
     public double getOfferCost() {
@@ -174,5 +179,14 @@ public class ProductEntity {
     public void setImage3(byte[] image3) {
         this.image3 = image3;
     }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     //endregion
 }
