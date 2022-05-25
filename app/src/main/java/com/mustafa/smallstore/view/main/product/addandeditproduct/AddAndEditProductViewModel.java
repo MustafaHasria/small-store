@@ -36,5 +36,9 @@ public class AddAndEditProductViewModel extends AndroidViewModel {
     public void insertProduct(ProductEntity productEntity) {
         productRepository.insert(productEntity);
     }
+
+    public void updateProduct(ProductEntity productEntity) {
+        productRepository.update(productEntity);
+    }
     //endregion
 }

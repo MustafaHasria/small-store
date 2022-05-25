@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         Tools.setSystemBarColor(this);
 
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
 
                 loginViewModel.login(binding.activityLoginTextInputEditTextUsername.getText().toString().trim(),
-                                binding.activityLoginTextInputEditTextPassword.getText().toString().trim())
+                        binding.activityLoginTextInputEditTextPassword.getText().toString().trim())
                         .observe(this, accountEntityList ->
                         {
                             if (accountEntityList.size() != 0) {

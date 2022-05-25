@@ -20,7 +20,7 @@ import com.mustafa.smallstore.model.entity.ProductEntity;
         AccountEntity.class,
         CategoryEntity.class,
         ProductEntity.class,
-}, version = 1)
+}, version = 2)
 public abstract class SmallStoreDatabase extends RoomDatabase {
 
     //region Variables
@@ -84,9 +84,15 @@ public abstract class SmallStoreDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             accountDao.insert(new AccountEntity("admin", null, 0, "0123"));
+            accountDao.insert(new AccountEntity("t", null, 0, "1"));
+            accountDao.insert(new AccountEntity("a", null, 0, "1"));
             categoryDao.insert(new CategoryEntity("Juice", null, 0));
             productDao.insert(new ProductEntity("First Item for test", 200, "UAE", false, "", false,
-                    0, "", null, null, null, 1, "Juice"));
+                    0, "", null, null, null, 1, "Juice", 200));
+            productDao.insert(new ProductEntity("Second Item for test", 200, "UAE", true, "", false,
+                    1000, "", null, null, null, 1, "Juice", 200));
+            productDao.insert(new ProductEntity("third Item for test", 200, "UAE", false, "", true,
+                    0, "", null, null, null, 1, "Juice", 200));
             return null;
         }
     }

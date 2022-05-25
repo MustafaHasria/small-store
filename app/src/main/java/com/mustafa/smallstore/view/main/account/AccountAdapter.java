@@ -93,7 +93,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
             itemToRecyclerViewTextViewContent = itemView.findViewById(R.id.item_to_recycler_view_text_view_password_and_role);
             itemToRecyclerViewImageViewUser = itemView.findViewById(R.id.item_to_recycler_view_image_user);
             itemToRecyclerViewRelativeLayout = itemView.findViewById(R.id.item_to_recycler_view_relative_layout);
-            itemToRecyclerViewConstraintLayoutParent = itemView.findViewById(R.id.item_to_recycler_view_constraint_layout_parent);
+            itemToRecyclerViewConstraintLayoutParent = itemView.findViewById(R.id.item_to_recycler_view_product_linear_layout_parent);
             itemToRecyclerViewConstraintLayoutParent.setOnClickListener(this);
         }
 
