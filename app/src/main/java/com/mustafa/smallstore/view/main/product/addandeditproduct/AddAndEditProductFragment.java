@@ -156,14 +156,12 @@ public class AddAndEditProductFragment extends Fragment {
                     null, null, null, null, 1,
                     binding.fragmentAddAndEditProductTextInputEditTextCategory.getText().toString(), quantity);
             Toast.makeText(getContext(), "The Product Has Been Saved", Toast.LENGTH_SHORT).show();
-            addAndEditProductViewModel.insertProduct(productEntity);
 
 
             if (bundle != null && bundle.getInt("id") != 0) {
                 productEntity.setId(bundle.getInt("id"));
                 addAndEditProductViewModel.updateProduct(productEntity);
             } else {
-
                 addAndEditProductViewModel.insertProduct(productEntity);
             }
 

@@ -53,28 +53,32 @@ public class ProductOfferAdapter extends RecyclerView.Adapter<ProductOfferAdapte
         CharSequence sequence = DateFormat.format("MMMM D , YYYY", date.getDate());
         specificDate = sequence.toString();
 
-        if (productEntityList.get(position).getImage1() != null)
-            picturesList.add(productEntityList.get(position).getImage1());
-        if (productEntityList.get(position).getImage2() != null)
-            picturesList.add(productEntityList.get(position).getImage2());
-        if (productEntityList.get(position).getImage3() != null)
-            picturesList.add(productEntityList.get(position).getImage3());
+        productEntity = productEntityList.get(position);
+
+        if (productEntity.getImage1() != null)
+            picturesList.add(productEntity.getImage1());
+        if (productEntity.getImage2() != null)
+            picturesList.add(productEntity.getImage2());
+        if (productEntity.getImage3() != null)
+            picturesList.add(productEntity.getImage3());
 
         pictureAdapter = new PictureAdapter(picturesList);
-
-        if (productEntityList.get(position).isOffered() == true && productEntityList.get(position).getExpireDateOffer() != specificDate) {
+        int month;
+        if (!productEntity.getExpireDateOffer().equals(""))
+            month = Integer.parseInt(productEntity.getExpireDateOffer().substring(3, 2));
+        if (productEntity.isOffered() && productEntity.getExpireDateOffer() != specificDate) {
             holder.itemRecyclerViewProductOfferTextViewOffer.setText("Offer");
         }
-        if (productEntityList.get(position).isOffered() == true && productEntityList.get(position).getExpireDateOffer() == specificDate) {
+        if (productEntity.isOffered() && productEntity.getExpireDateOffer() == specificDate) {
             holder.itemRecyclerViewProductOfferTextViewOffer.setText("End Offer");
         }
 
-        holder.itemRecyclerViewProductOfferTextViewName.setText(productEntityList.get(position).getName());
-        holder.itemRecyclerViewProductOfferTextViewOffer_price_value.setText(String.valueOf(productEntityList.get(position).getOfferCost()));
-        holder.itemRecyclerViewProductOfferTextViewQuantityValue.setText(String.valueOf(productEntityList.get(position).getQuantity()));
-        holder.itemRecyclerViewProductOfferTextViewMadeInValue.setText(productEntityList.get(position).getMadeIn());
-        holder.itemRecyclerViewProductOfferTextViewCategoryValue.setText(productEntityList.get(position).getCategoryName());
-        holder.itemRecyclerViewProductOfferTextViewExpireDateOfferValue.setText(productEntityList.get(position).getExpireDateOffer());
+        holder.itemRecyclerViewProductOfferTextViewName.setText(productEntity.getName());
+        holder.itemRecyclerViewProductOfferTextViewOffer_price_value.setText(String.valueOf(productEntity.getOfferCost()));
+        holder.itemRecyclerViewProductOfferTextViewQuantityValue.setText(String.valueOf(productEntity.getQuantity()));
+        holder.itemRecyclerViewProductOfferTextViewMadeInValue.setText(productEntity.getMadeIn());
+        holder.itemRecyclerViewProductOfferTextViewCategoryValue.setText(productEntity.getCategoryName());
+        holder.itemRecyclerViewProductOfferTextViewExpireDateOfferValue.setText(productEntity.getExpireDateOffer());
     }
 
     @Override
