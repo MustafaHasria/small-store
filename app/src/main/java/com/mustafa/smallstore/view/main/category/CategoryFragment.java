@@ -74,8 +74,27 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
                     .add(R.id.main_activity_frame_layout, addAndEditCategoryFragment, "ADD_AND_EDIT_CATEGORY_FRAGMENT")
                     .addToBackStack("dsf").commit();
         });
+
+
+        //search view
+//        binding.fragmentCategorySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                searchByName(newText);
+//                return true;
+//            }
+//        });
+//
+
+
         return view;
     }
+
     //endregion
 
 
@@ -109,5 +128,18 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
                 .addToBackStack("fasdf")
                 .commit();
     }
+    //endregion
+
+    //region For Search
+//    private void searchByName(String newText) {
+//        List<CategoryEntity> filterByName = new ArrayList<>();
+//        for (CategoryEntity searchCategory : filterByName){
+//
+//            if (searchCategory.getName().toLowerCase().contains(newText.toLowerCase())){
+//                filterByName.add(searchCategory);
+//            }
+//        }
+//        categoryAdapter.filterByNames(filterByName);
+//    }
     //endregion
 }

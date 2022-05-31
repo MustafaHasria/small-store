@@ -76,6 +76,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
     //endregion
 
+    //for Delete Swipe Position
+    public ProductEntity getProductPosition(int position) {
+        return productEntityList.get(position);
+    }
+
     //Region Interface
     public interface ProductOnClickListener {
         void onProductItemLinearParentClickListener(ProductEntity productEntity);

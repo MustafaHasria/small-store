@@ -26,4 +26,7 @@ public interface CategoryDao {
     @Query("Select * from category_table order by name")
     LiveData<List<CategoryEntity>> getCategories();
 
+    @Query("SELECT * FROM category_table")
+    LiveData<List<CategoryEntity>> getAllNotes();
+
 }

@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,6 +50,24 @@ public class ProductFragment extends Fragment implements ProductAdapter.ProductO
             productOfferAdapter.refreshList(productEntities);
 
         });
+
+
+        //Swipe For Delete Account
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                productViewModel.delete(productAdapter.getProductPosition(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(binding.fragmentProductRecyclerViewProduct
+        );
+
+
         //open addAndEditProduct Fragment
         binding.fragmentProductFloatingActionButtonAddProduct.setOnClickListener(view1 ->
         {

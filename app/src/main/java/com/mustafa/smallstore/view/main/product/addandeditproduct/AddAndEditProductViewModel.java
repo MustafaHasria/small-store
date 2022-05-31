@@ -30,7 +30,7 @@ public class AddAndEditProductViewModel extends AndroidViewModel {
 
     //region Methods
     public LiveData<List<CategoryEntity>> getAllCategories() {
-        return categoryRepository.getAllCategories();
+        return categoryRepository.getAllCategoriesByName();
     }
 
     public void insertProduct(ProductEntity productEntity) {

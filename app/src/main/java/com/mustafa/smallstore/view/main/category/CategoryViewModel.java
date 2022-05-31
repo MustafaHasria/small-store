@@ -31,7 +31,7 @@ public class CategoryViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<CategoryEntity>> getAllCategories() {
-        return categoryRepository.getAllCategories();
+        return categoryRepository.getAllCategoriesByName();
     }
     //endregion
 }

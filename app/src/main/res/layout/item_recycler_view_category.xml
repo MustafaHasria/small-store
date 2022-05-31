@@ -1,37 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_recycler_view_Linear_layout_view_main_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/item_recycler_view_Linear_layout_parent_for_text_and_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="10dp">
 
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/item_recycler_view_category_rounded_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_image"
+            android:elevation="5dp"
+            android:scaleType="centerCrop"
+            cardview:riv_corner_radius="35dp" />
+
+
         <TextView
-            android:id="@+id/item_recycler_view_category_text_view_name"
+            android:id="@+id/item_recycler_view_category_text_view_name_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="10dp"
             android:text="@string/category"
             android:textColor="@color/colorPrimary"
             android:textSize="22sp"
             android:textStyle="bold" />
 
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/item_recycler_view_Linear_layout_parent_for_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <View
-            android:id="@+id/item_to_recycler_view_view"
-            android:layout_width="wrap_content"
+            android:id="@+id/item_recycler_view_category_view"
+            android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/login_button_bk"
-            app:layout_constraintBottom_toBottomOf="@id/item_to_recycler_view_relative_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/item_to_recycler_view_relative_layout" />
+            android:background="@drawable/login_button_bk" />
 
     </LinearLayout>
 

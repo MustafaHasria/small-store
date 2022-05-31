@@ -90,7 +90,7 @@ public class AddAndEditProductFragment extends Fragment {
 
         addAndEditProductViewModel = new ViewModelProvider(requireActivity()).get(AddAndEditProductViewModel.class);
 
-        addAndEditProductViewModel.categoryRepository.getAllCategories().observe(requireActivity(), categoryEntities -> {
+        addAndEditProductViewModel.categoryRepository.getAllCategoriesByName().observe(requireActivity(), categoryEntities -> {
             if (categoryEntities != null && categoryEntities.size() != 0) {
                 for (int i = 0; i < categoryEntities.size(); i++) {
                     nameCategoryList.add(categoryEntities.get(i).getName());

@@ -1,8 +1,10 @@
 package com.mustafa.smallstore.view.main.category;
 
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -29,6 +31,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     }
     //endregion
 
+
     //region Adapter
     @NonNull
     @Override
@@ -42,6 +45,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         CategoryEntity categoryEntity = categoryEntityList.get(position);
         holder.itemRecyclerViewCategoryTextViewName.setText(categoryEntity.getName());
+
+        if (categoryEntity.getImage() != null)
+            holder.itemRecyclerViewCategoryRoundedImage.setImageBitmap(
+                    BitmapFactory
+                            .decodeByteArray(categoryEntity.getImage(), 0, categoryEntity.getImage().length)
+
+            );
     }
 
     @Override
@@ -49,16 +59,23 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return categoryEntityList.size();
     }
 
+//    //For Search
+//    public void filterByNames(List<CategoryEntity> filterAndGetOnlyByName){
+//        categoryEntityList = filterAndGetOnlyByName;
+//        notifyDataSetChanged();
+//    }
+
+    //For Refresh
     public void refreshList(List<CategoryEntity> accountEntityList) {
         this.categoryEntityList = accountEntityList;
         notifyDataSetChanged();
 
     }
 
+    //For Delete
     public CategoryEntity getCategoryPosition(int position) {
         return categoryEntityList.get(position);
     }
-
     //endregion
 
     //region Interface
@@ -71,13 +88,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         LinearLayout itemRecyclerViewCategoryCardViewMainContainer;
         TextView itemRecyclerViewCategoryTextViewName;
-        //View itemToRecyclerViewView;
+        ImageView itemRecyclerViewCategoryRoundedImage;
+        View itemToRecyclerViewCategoryView;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             itemRecyclerViewCategoryCardViewMainContainer = itemView.findViewById(R.id.item_recycler_view_Linear_layout_view_main_container);
-            itemRecyclerViewCategoryTextViewName = itemView.findViewById(R.id.item_recycler_view_category_text_view_name);
+            itemRecyclerViewCategoryTextViewName = itemView.findViewById(R.id.item_recycler_view_category_text_view_name_category);
+            itemToRecyclerViewCategoryView = itemView.findViewById(R.id.item_recycler_view_category_view);
+            itemRecyclerViewCategoryRoundedImage = itemView.findViewById(R.id.item_recycler_view_category_rounded_image);
 
+            itemRecyclerViewCategoryCardViewMainContainer.setOnClickListener(this);
         }
 
         @Override

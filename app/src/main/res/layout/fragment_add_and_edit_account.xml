@@ -24,7 +24,7 @@
             android:weightSum="10">
 
             <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/fragment_add_and_edit_account_image_user"
+                android:id="@+id/item_recycler_view_category_rounded_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"

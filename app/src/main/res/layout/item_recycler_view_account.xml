@@ -76,7 +76,7 @@
             app:srcCompat="@mipmap/ic_launcher" />
 
         <View
-            android:id="@+id/item_to_recycler_view_view"
+            android:id="@+id/item_recycler_view_category_view"
             android:layout_width="wrap_content"
             android:layout_height="2dp"
             android:layout_marginTop="5dp"

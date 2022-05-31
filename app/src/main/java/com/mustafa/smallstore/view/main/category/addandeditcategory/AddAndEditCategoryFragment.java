@@ -2,12 +2,15 @@ package com.mustafa.smallstore.view.main.category.addandeditcategory;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -16,6 +19,7 @@ import com.mustafa.smallstore.databinding.FragmentAddAndEditCategoryBinding;
 import com.mustafa.smallstore.model.entity.CategoryEntity;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class AddAndEditCategoryFragment extends Fragment {
 
@@ -69,10 +73,31 @@ public class AddAndEditCategoryFragment extends Fragment {
             requireActivity().onBackPressed();
         });
 
+
+        binding.fragmentAddAndEditCategoryEditButtonChooseImage.setOnClickListener(view1 -> {
+            chooseImage();
+        });
+
         return view;
     }
     //endregion
 
+
+    //region On fragment result (use for add image)
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            Uri uri = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            binding.fragmentAddAndEditCategoryEditRoundedImageCategoryImage.setImageBitmap(bitmap);
+        }
+    }
+    //endregion
 
     //region Methods
     private void chooseImage() {

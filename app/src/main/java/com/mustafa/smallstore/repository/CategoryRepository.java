@@ -37,7 +37,10 @@ public class CategoryRepository {
         new DeleteAccountTask(categoryDao).execute(categoryEntity);
     }
 
-    public LiveData<List<CategoryEntity>> getAllCategories() {
+    //For Search
+    public LiveData<List<CategoryEntity>> getAllNotes;
+
+    public LiveData<List<CategoryEntity>> getAllCategoriesByName() {
         return categoryDao.getCategories();
     }
 
