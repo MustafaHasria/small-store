@@ -84,4 +84,7 @@
     <color name="line_lighter_grey">#dedede</color>
     <color name="line_light_greys">#d7a7a7a7</color>
 
+
+    <color name="background">#2e2a38</color>
+    <color name="background_dialog">#f7f7f7</color>
 </resources>

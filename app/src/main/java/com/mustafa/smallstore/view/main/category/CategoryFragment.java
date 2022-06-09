@@ -1,10 +1,16 @@
 package com.mustafa.smallstore.view.main.category;
 
+import android.app.ActionBar;
+import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,6 +20,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.mustafa.smallstore.R;
 import com.mustafa.smallstore.databinding.FragmentCategoryBinding;
 import com.mustafa.smallstore.model.entity.CategoryEntity;
@@ -30,6 +37,7 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
     FragmentCategoryBinding binding;
     List<CategoryEntity> categoryEntityList;
     Bundle bundle;
+    Dialog dialog;
     //endregion
 
 
@@ -56,11 +64,10 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                categoryViewModel.delete(categoryAdapter.getCategoryPosition(viewHolder.getAdapterPosition()));
-                Toast.makeText(getContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
+                ShowDialog("yes", "Are you sure want to delete \n             this Category?", viewHolder);
             }
-        }).attachToRecyclerView(binding.fragmentCategoryRecyclerView);
 
+        }).attachToRecyclerView(binding.fragmentCategoryRecyclerView);
         setupRecyclerView();
 
         //when click action button for move to another fragment
@@ -74,22 +81,6 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
                     .add(R.id.main_activity_frame_layout, addAndEditCategoryFragment, "ADD_AND_EDIT_CATEGORY_FRAGMENT")
                     .addToBackStack("dsf").commit();
         });
-
-
-        //search view
-//        binding.fragmentCategorySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                searchByName(newText);
-//                return true;
-//            }
-//        });
-//
 
 
         return view;
@@ -128,18 +119,65 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
                 .addToBackStack("fasdf")
                 .commit();
     }
-    //endregion
 
-    //region For Search
-//    private void searchByName(String newText) {
-//        List<CategoryEntity> filterByName = new ArrayList<>();
-//        for (CategoryEntity searchCategory : filterByName){
-//
-//            if (searchCategory.getName().toLowerCase().contains(newText.toLowerCase())){
-//                filterByName.add(searchCategory);
-//            }
-//        }
-//        categoryAdapter.filterByNames(filterByName);
-//    }
-    //endregion
+    private void ShowDialog(String yes, String t1, RecyclerView.ViewHolder viewHolder) {
+        Button ok;
+        TextView text;
+        LottieAnimationView status;
+
+        dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.bottom_sheet_for_delete);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.CENTER);
+        window.getAttributes().windowAnimations = R.style.DialogAnimation;
+
+        ok = dialog.findViewById(R.id.bottom_sheet_for_delete_button_delete_ok);
+        text = dialog.findViewById(R.id.bottom_sheet_for_delete_textview_text);
+        status = dialog.findViewById(R.id.bottom_sheet_for_delete_animation);
+
+        text.setText(t1);
+
+        if (yes.equals("Yes")) {
+            status.setAnimation(R.raw.ok_happy);
+            text.setTextColor(getResources().getColor(R.color.green));
+            ok.setBackgroundResource(R.drawable.yes_button_background);
+
+        }
+
+        ok.setOnClickListener(view -> {
+            categoryViewModel.delete(categoryAdapter.getCategoryPosition(viewHolder.getAdapterPosition()));
+            dialog.dismiss();
+        });
+
+        if (ok.isClickable()) {
+            DeleteSuccessful();
+        }
+        dialog.setCancelable(true);
+        window.setLayout(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        dialog.show();
+    }
+
+    private void DeleteSuccessful() {
+        LottieAnimationView status;
+        dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.successful_delete_item);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.CENTER);
+        window.getAttributes().windowAnimations = R.style.DialogAnimation;
+
+        status = dialog.findViewById(R.id.successful_delete_item_animation);
+
+        Handler handler = new Handler();
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        };
+        handler.postDelayed(r, 4000);
+
+    }
+
 }

@@ -63,9 +63,9 @@ public class ProductOfferAdapter extends RecyclerView.Adapter<ProductOfferAdapte
             picturesList.add(productEntity.getImage3());
 
         pictureAdapter = new PictureAdapter(picturesList);
-        int month;
-        if (!productEntity.getExpireDateOffer().equals(""))
-            month = Integer.parseInt(productEntity.getExpireDateOffer().substring(3, 2));
+//        int month;
+//        if (!productEntity.getExpireDateOffer().equals(""))
+//            month = Integer.parseInt(productEntity.getExpireDateOffer().substring(3, 2));
         if (productEntity.isOffered() && productEntity.getExpireDateOffer() != specificDate) {
             holder.itemRecyclerViewProductOfferTextViewOffer.setText("Offer");
         }

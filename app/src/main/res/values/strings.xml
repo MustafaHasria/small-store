@@ -24,4 +24,12 @@
 
     //for Number Picker
     <string name="roboto_light">sans-serif-light</string>
+    <string name="show_add_fragment_product">Show Add fragment product</string>
+
+
+    <string name="yes">Yes</string>
+    <string name="no">no</string>
+    <string name="uh_oh">Uh Oh</string>
+    <string name="thank_for_watching">Thank For Watching...</string>
+
 </resources>

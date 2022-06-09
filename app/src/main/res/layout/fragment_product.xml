@@ -82,18 +82,19 @@
 
         </LinearLayout>
 
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fragment_product_floating_action_button_add_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="26dp"
+            android:contentDescription="@string/show_add_fragment_product"
             android:backgroundTint="@color/colorPrimaryDark"
-            android:clickable="true"
             android:elevation="2dp"
             android:src="@drawable/ic_floating_action_btn_add"
-            android:tint="#ffffff" />
+            app:tint="#ffffff" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -124,7 +125,7 @@
                         android:textSize="22dp" />
 
                     <com.airbnb.lottie.LottieAnimationView
-                        android:id="@+id/animation_view"
+                        android:id="@+id/bottom_sheet_for_delete_animation"
                         android:layout_width="100dp"
                         android:layout_height="50dp"
                         android:layout_alignLeft="@id/fragment_product_text_view_offer"
