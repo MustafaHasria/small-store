@@ -64,7 +64,7 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                ShowDialog("yes", "Are you sure want to delete \n             this Category?", viewHolder);
+                ShowDialog("yes", "Are you sure want to delete \n             this Category?", viewHolder, viewHolder.getLayoutPosition());
             }
 
         }).attachToRecyclerView(binding.fragmentCategoryRecyclerView);
@@ -120,10 +120,11 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
                 .commit();
     }
 
-    private void ShowDialog(String yes, String t1, RecyclerView.ViewHolder viewHolder) {
+    private void ShowDialog(String yes, String t1, RecyclerView.ViewHolder viewHolder, int positionItem) {
         Button ok;
         TextView text;
         LottieAnimationView status;
+        LottieAnimationView statusSuccessfully;
 
         dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.bottom_sheet_for_delete);
@@ -135,6 +136,7 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
         ok = dialog.findViewById(R.id.bottom_sheet_for_delete_button_delete_ok);
         text = dialog.findViewById(R.id.bottom_sheet_for_delete_textview_text);
         status = dialog.findViewById(R.id.bottom_sheet_for_delete_animation);
+        statusSuccessfully = dialog.findViewById(R.id.successful_delete_item_animation);
 
         text.setText(t1);
 
@@ -147,37 +149,48 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
 
         ok.setOnClickListener(view -> {
             categoryViewModel.delete(categoryAdapter.getCategoryPosition(viewHolder.getAdapterPosition()));
-            dialog.dismiss();
+            ok.setVisibility(View.GONE);
+            text.setVisibility(View.GONE);
+            status.setVisibility(View.GONE);
+            statusSuccessfully.setVisibility(View.VISIBLE);
+
+            Handler handler = new Handler();
+            Runnable r = () -> dialog.dismiss();
+            handler.postDelayed(r, 2000);
         });
 
-        if (ok.isClickable()) {
-            DeleteSuccessful();
-        }
+//        if (ok.isClickable()) {
+//            DeleteSuccessful();
+//        }
         dialog.setCancelable(true);
+
+        dialog.setOnCancelListener(dialogInterface -> {
+            categoryAdapter.notifyItemChanged(positionItem);
+        });
         window.setLayout(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         dialog.show();
     }
 
-    private void DeleteSuccessful() {
-        LottieAnimationView status;
-        dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.successful_delete_item);
-        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        Window window = dialog.getWindow();
-        window.setGravity(Gravity.CENTER);
-        window.getAttributes().windowAnimations = R.style.DialogAnimation;
-
-        status = dialog.findViewById(R.id.successful_delete_item_animation);
-
-        Handler handler = new Handler();
-        Runnable r = new Runnable() {
-            @Override
-            public void run() {
-                dialog.dismiss();
-            }
-        };
-        handler.postDelayed(r, 4000);
-
-    }
+//    private void DeleteSuccessful() {
+//        LottieAnimationView status;
+//        dialog = new Dialog(getActivity());
+//        dialog.setContentView(R.layout.successful_delete_item);
+//        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//        Window window = dialog.getWindow();
+//        window.setGravity(Gravity.CENTER);
+//        window.getAttributes().windowAnimations = R.style.DialogAnimation;
+//
+//        status = dialog.findViewById(R.id.successful_delete_item_animation);
+//
+//        Handler handler = new Handler();
+//        Runnable r = new Runnable() {
+//            @Override
+//            public void run() {
+//                dialog.dismiss();
+//            }
+//        };
+//        handler.postDelayed(r, 2000);
+//
+//    }
 
 }

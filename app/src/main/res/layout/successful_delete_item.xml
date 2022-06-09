@@ -21,6 +21,7 @@
         </RelativeLayout>
 
         <com.airbnb.lottie.LottieAnimationView
+            android:visibility="gone"
             android:id="@+id/successful_delete_item_animation"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -29,7 +30,7 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/successful_delete"
-            app:lottie_url="REPLACE_JSON_URL"></com.airbnb.lottie.LottieAnimationView>
+            app:lottie_url="REPLACE_JSON_URL" />
 
     </RelativeLayout>
 

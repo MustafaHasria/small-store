@@ -6,6 +6,7 @@
     android:layout_centerInParent="true">
 
     <RelativeLayout
+        android:visibility="visible"
         android:layout_width="250dp"
         android:layout_height="300dp"
         android:layout_centerInParent="true">
@@ -26,7 +27,7 @@
                 android:text="Are you sure want to delete\n             this Category?"
                 android:textColor="@color/colorPrimaryLight"
                 android:textSize="15sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/bottom_sheet_for_delete_button_delete_ok"
@@ -39,7 +40,7 @@
                 android:text="Ok"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textStyle="bold"></Button>
+                android:textStyle="bold" />
         </RelativeLayout>
 
         <com.airbnb.lottie.LottieAnimationView
@@ -50,8 +51,20 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/warning_alert"
-            app:lottie_url="REPLACE_JSON_URL"></com.airbnb.lottie.LottieAnimationView>
+            app:lottie_url="REPLACE_JSON_URL" />
 
     </RelativeLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/successful_delete_item_animation"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/successful_delete"
+        app:lottie_url="REPLACE_JSON_URL" />
 
 </RelativeLayout>
