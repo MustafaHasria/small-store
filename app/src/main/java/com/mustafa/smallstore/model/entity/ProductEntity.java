@@ -28,6 +28,9 @@ public class ProductEntity {
     @ColumnInfo(name = "expire_date_offer")
     private String expireDateOffer;
 
+    @ColumnInfo(name = "start_date_offer")
+    private String startDateOffer;
+
     @ColumnInfo(name = "is_new")
     private boolean isNew;
 
@@ -37,14 +40,14 @@ public class ProductEntity {
     @ColumnInfo(name = "qr_code")
     private String qrCode;
 
-    @ColumnInfo(name = "image1")
-    private byte[] image1;
+    //  @ColumnInfo(name = "image1")
+    //  private byte[] image1;
 
-    @ColumnInfo(name = "image2")
-    private byte[] image2;
+    //  @ColumnInfo(name = "image2")
+    //  private byte[] image2;
 
-    @ColumnInfo(name = "image3")
-    private byte[] image3;
+    //  @ColumnInfo(name = "image3")
+    //  private byte[] image3;
 
     @ColumnInfo(name = "category_id")
     private int categoryId;
@@ -59,18 +62,19 @@ public class ProductEntity {
 
     //region Constructor
 
-    public ProductEntity(String name, double price, String madeIn, boolean isOffered, String expireDateOffer, boolean isNew, double offerCost, String qrCode, byte[] image1, byte[] image2, byte[] image3, int categoryId, String categoryName, int quantity) {
+    public ProductEntity(String name, double price, String madeIn, boolean isOffered, String expireDateOffer, String startDateOffer, boolean isNew, double offerCost, String qrCode, int categoryId, String categoryName, int quantity) {
         this.name = name;
         this.price = price;
         this.madeIn = madeIn;
         this.isOffered = isOffered;
         this.expireDateOffer = expireDateOffer;
+        this.startDateOffer = startDateOffer;
         this.isNew = isNew;
         this.offerCost = offerCost;
         this.qrCode = qrCode;
-        this.image1 = image1;
-        this.image2 = image2;
-        this.image3 = image3;
+//        this.image1 = image1;
+//        this.image2 = image2;
+//        this.image3 = image3;
         this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.quantity = quantity;
@@ -153,29 +157,29 @@ public class ProductEntity {
         this.qrCode = qrCode;
     }
 
-    public byte[] getImage1() {
-        return image1;
-    }
-
-    public void setImage1(byte[] image1) {
-        this.image1 = image1;
-    }
-
-    public byte[] getImage2() {
-        return image2;
-    }
-
-    public void setImage2(byte[] image2) {
-        this.image2 = image2;
-    }
-
-    public byte[] getImage3() {
-        return image3;
-    }
-
-    public void setImage3(byte[] image3) {
-        this.image3 = image3;
-    }
+//    public byte[] getImage1() {
+//        return image1;
+//    }
+//
+//    public void setImage1(byte[] image1) {
+//        this.image1 = image1;
+//    }
+//
+//    public byte[] getImage2() {
+//        return image2;
+//    }
+//
+//    public void setImage2(byte[] image2) {
+//        this.image2 = image2;
+//    }
+//
+//    public byte[] getImage3() {
+//        return image3;
+//    }
+//
+//    public void setImage3(byte[] image3) {
+//        this.image3 = image3;
+//    }
 
     public int getCategoryId() {
         return categoryId;
@@ -199,6 +203,14 @@ public class ProductEntity {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getStartDateOffer() {
+        return startDateOffer;
+    }
+
+    public void setStartDateOffer(String startDateOffer) {
+        this.startDateOffer = startDateOffer;
     }
 
 

@@ -26,14 +26,14 @@ import java.util.Objects;
 
 public class AddAndEditProductFragment extends Fragment {
 
-    private static final String TAG = "NumberPicker";
 
+    private static final String TAG = "NumberPicker";
+    public int quantity;
     //region Component
     FragmentAddAndEditProductBinding binding;
+    //endregion
     AppCompatAutoCompleteTextView fragmentAddAndEditProductTextInputEditTextCategory;
     AppCompatAutoCompleteTextView fragmentAddAndEditProductTextInputEditTextMadeIn;
-    //endregion
-
     //region Variable
     ArrayList<String> nameCategoryList;
     ArrayAdapter<String> categoryAdapter;
@@ -43,7 +43,6 @@ public class AddAndEditProductFragment extends Fragment {
     ProductEntity productEntity;
     String startOfferDate;
     String endOfferDate;
-    int quantity;
     Bundle bundle;
     //endregion
 
@@ -113,11 +112,6 @@ public class AddAndEditProductFragment extends Fragment {
         binding.fragmentAddAndEditProductNumberPickerHorizontal.setOnValueChangedListener((com.shawnlin.numberpicker.NumberPicker.OnValueChangeListener) (picker, oldVal, newVal) ->
                 quantity = picker.getValue());
 
-//
-//        //For date picker
-//        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
-//        builder.setTitleText("Select Start Offer Date");
-//        final MaterialDatePicker<Long> materialDatePicker = builder.build();
 
         //For click choose start date
         binding.fragmentAddAndEditProductButtonDatePickerStartOfferDate.setOnClickListener(view1 -> {
@@ -134,7 +128,6 @@ public class AddAndEditProductFragment extends Fragment {
         //And And Edit Button
         binding.fragmentAddAndEditProductEditButtonAddProduct.setOnClickListener(view1 -> {
 
-
             boolean checkedOffer;
             boolean productNew;
             if (binding.fragmentAddAndEditProductCheckedBoxIsOffer.isChecked()) {
@@ -149,11 +142,11 @@ public class AddAndEditProductFragment extends Fragment {
             }
 
 
-            productEntity = new ProductEntity(Objects.requireNonNull(binding.fragmentAddAndEditProductEditTextName.getText()).toString(),
+            productEntity = new ProductEntity(Objects.requireNonNull(binding.fragmentAddAndEditProductEditTextName.getText()).toString().trim(),
                     Double.parseDouble(Objects.requireNonNull(binding.fragmentAddAndEditProductEditPrice.getText()).toString()),
                     binding.fragmentAddAndEditProductTextInputEditTextMadeIn.getText().toString(),
-                    checkedOffer, endOfferDate, productNew, Double.parseDouble(Objects.requireNonNull(binding.fragmentAddAndEditProductEditOfferPrice.getText()).toString()),
-                    null, null, null, null, 1,
+                    checkedOffer, endOfferDate, startOfferDate, productNew, Double.parseDouble(Objects.requireNonNull(binding.fragmentAddAndEditProductEditOfferPrice.getText()).toString()),
+                    null, 1,
                     binding.fragmentAddAndEditProductTextInputEditTextCategory.getText().toString(), quantity);
             Toast.makeText(getContext(), "The Product Has Been Saved", Toast.LENGTH_SHORT).show();
 
@@ -173,6 +166,7 @@ public class AddAndEditProductFragment extends Fragment {
 
         return view;
     }
+
     //endregion
 
 
@@ -201,7 +195,7 @@ public class AddAndEditProductFragment extends Fragment {
     }
 
     private void showDataPickerDialogForStartDate() {
-        MaterialDatePicker materialDatePicker = MaterialDatePicker.Builder.datePicker()
+        MaterialDatePicker<Long> materialDatePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select Start Offer Date").build();
 
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
@@ -217,20 +211,20 @@ public class AddAndEditProductFragment extends Fragment {
     }
 
     private void showDataPickerDialogForEndDate() {
-        MaterialDatePicker materialDatePicker1 = MaterialDatePicker.Builder.datePicker()
+        MaterialDatePicker<Long> materialDatePicker1 = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select End Offer Date").build();
 
         materialDatePicker1.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) {
                 endOfferDate = materialDatePicker1.getHeaderText();
-
             }
         });
 
         materialDatePicker1.show(requireActivity().getSupportFragmentManager(), "DATE_PICKER_END");
 
     }
+
 
     //endregion
 }

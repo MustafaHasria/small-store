@@ -58,12 +58,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public int getItemCount() {
         return categoryEntityList.size();
     }
-
-//    //For Search
-//    public void filterByNames(List<CategoryEntity> filterAndGetOnlyByName){
-//        categoryEntityList = filterAndGetOnlyByName;
-//        notifyDataSetChanged();
-//    }
+    //endregion
 
     //For Refresh
     public void refreshList(List<CategoryEntity> accountEntityList) {

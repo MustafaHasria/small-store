@@ -1,7 +1,6 @@
 package com.mustafa.smallstore.view.main.product;
 
 import android.content.Context;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,30 +13,33 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mustafa.smallstore.R;
 import com.mustafa.smallstore.model.entity.ProductEntity;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 public class ProductOfferAdapter extends RecyclerView.Adapter<ProductOfferAdapter.ProductOfferViewHolder> {
 
-    public String specificDate;
+
     //region Variables
     List<ProductEntity> productEntityList;
-    List<byte[]> picturesList;
-    PictureAdapter pictureAdapter;
     Context context;
     ProductEntity productEntity;
     ProductOfferOnClickListener productOfferOnClickListener;
+    public String specificDate;
+    // List<byte[]> picturesList;
+    // PictureAdapter pictureAdapter;
     //endregion
 
     //region Constructor
     public ProductOfferAdapter(List<ProductEntity> productEntityList, ProductOfferOnClickListener productOfferOnClickListener) {
         this.productEntityList = productEntityList;
-        picturesList = new ArrayList<>();
+        //picturesList = new ArrayList<>();
         this.productOfferOnClickListener = productOfferOnClickListener;
     }
     //endregion
 
+    //region Adapter
     @NonNull
     @Override
     public ProductOfferViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,29 +50,21 @@ public class ProductOfferAdapter extends RecyclerView.Adapter<ProductOfferAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ProductOfferViewHolder holder, int position) {
-        //for date offer
-        Date date = new Date();
-        CharSequence sequence = DateFormat.format("MMMM D , YYYY", date.getDate());
-        specificDate = sequence.toString();
-
+        ProductEntity productEntity;
         productEntity = productEntityList.get(position);
+        //for date offer
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
 
-        if (productEntity.getImage1() != null)
-            picturesList.add(productEntity.getImage1());
-        if (productEntity.getImage2() != null)
-            picturesList.add(productEntity.getImage2());
-        if (productEntity.getImage3() != null)
-            picturesList.add(productEntity.getImage3());
-
-        pictureAdapter = new PictureAdapter(picturesList);
-//        int month;
-//        if (!productEntity.getExpireDateOffer().equals(""))
-//            month = Integer.parseInt(productEntity.getExpireDateOffer().substring(3, 2));
-        if (productEntity.isOffered() && productEntity.getExpireDateOffer() != specificDate) {
-            holder.itemRecyclerViewProductOfferTextViewOffer.setText("Offer");
-        }
-        if (productEntity.isOffered() && productEntity.getExpireDateOffer() == specificDate) {
-            holder.itemRecyclerViewProductOfferTextViewOffer.setText("End Offer");
+        Date startDate;
+        Date expireDate;
+        try {
+            if (!productEntity.getStartDateOffer().isEmpty() && !productEntity.getExpireDateOffer().isEmpty()) {
+                startDate = new SimpleDateFormat("MMM dd, yyyy").parse(productEntity.getStartDateOffer());
+                expireDate = new SimpleDateFormat("MMM dd, yyyy").parse(productEntity.getExpireDateOffer());
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
         holder.itemRecyclerViewProductOfferTextViewName.setText(productEntity.getName());
@@ -81,10 +75,32 @@ public class ProductOfferAdapter extends RecyclerView.Adapter<ProductOfferAdapte
         holder.itemRecyclerViewProductOfferTextViewExpireDateOfferValue.setText(productEntity.getExpireDateOffer());
     }
 
+//        if (productEntity.getImage1() != null)
+//            picturesList.add(productEntity.getImage1());
+//        if (productEntity.getImage2() != null)
+//            picturesList.add(productEntity.getImage2());
+//        if (productEntity.getImage3() != null)
+//            picturesList.add(productEntity.getImage3());
+//
+//        pictureAdapter = new PictureAdapter(picturesList);
+//        int month;
+//        if (!productEntity.getExpireDateOffer().equals(""))
+//            month = Integer.parseInt(productEntity.getExpireDateOffer().substring(3, 2));
+//        if (productEntity.isOffered() && productEntity.getExpireDateOffer() > specificDate) {
+//            holder.itemRecyclerViewProductOfferTextViewOffer.setText("Offer");
+//        }
+//        if (productEntity.isOffered() && productEntity.getExpireDateOffer() == specificDate) {
+//            holder.itemRecyclerViewProductOfferTextViewOffer.setText("End Offer");
+//        }
+
+
+}
+
     @Override
     public int getItemCount() {
         return productEntityList.size();
     }
+    //endregion
 
     //region Methods
     public void refreshList(List<ProductEntity> productEntityList) {
@@ -93,14 +109,22 @@ public class ProductOfferAdapter extends RecyclerView.Adapter<ProductOfferAdapte
     }
     //endregion
 
-    //region Interface
-    public interface ProductOfferOnClickListener {
-        void onProductOfferItemLinearParentClickListener(ProductEntity productEntity);
-    }
-    //endregion
 
-    //region View Holder
-    public class ProductOfferViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    //region Delete
+    public ProductEntity getProductPosition(int position) {
+        return productEntityList.get(position);
+    }
+//endregion
+
+
+//region Interface
+public interface ProductOfferOnClickListener {
+    void onProductOfferItemLinearParentClickListener(ProductEntity productEntity);
+}
+//endregion
+
+//region View Holder
+public class ProductOfferViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         //region Components
         RecyclerView itemRecyclerViewProductOfferRecyclerViewImage;

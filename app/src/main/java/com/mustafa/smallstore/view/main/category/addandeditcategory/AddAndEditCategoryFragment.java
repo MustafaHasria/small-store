@@ -52,10 +52,10 @@ public class AddAndEditCategoryFragment extends Fragment {
         {
             if (bitmap != null) {
                 categoryEntity = new CategoryEntity(binding.fragmentAddAndEditCategoryEditEditTextCategoryName.getText().toString(),
-                        bitmapToByteArray(bitmap), 0);
+                        bitmapToByteArray(bitmap));
             } else {
                 categoryEntity = new CategoryEntity(binding.fragmentAddAndEditCategoryEditEditTextCategoryName.getText().toString(),
-                        null, 0);
+                        null);
             }
 
             if (bundle != null && bundle.getInt("id") != 0) {

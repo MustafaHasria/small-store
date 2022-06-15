@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mustafa.smallstore.R;
 import com.mustafa.smallstore.model.entity.ProductEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
@@ -21,7 +20,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     //region Variables
     List<ProductEntity> productEntityList;
     List<byte[]> picturesList;
-    PictureAdapter pictureAdapter;
+    //PictureAdapter pictureAdapter;
     Context context;
     ProductOnClickListener productOnClickListener;
     //endregion
@@ -29,13 +28,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     //region Constructor
     public ProductAdapter(List<ProductEntity> productEntityList, ProductOnClickListener productOnClickListener) {
         this.productEntityList = productEntityList;
-        picturesList = new ArrayList<>();
+        //picturesList = new ArrayList<>();
         this.productOnClickListener = productOnClickListener;
     }
     //endregion
 
     //region Adapter
-
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,14 +44,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        if (productEntityList.get(position).getImage1() != null)
-            picturesList.add(productEntityList.get(position).getImage1());
-        if (productEntityList.get(position).getImage2() != null)
-            picturesList.add(productEntityList.get(position).getImage2());
-        if (productEntityList.get(position).getImage3() != null)
-            picturesList.add(productEntityList.get(position).getImage3());
+//        if (productEntityList.get(position).getImage1() != null)
+//            picturesList.add(productEntityList.get(position).getImage1());
+//        if (productEntityList.get(position).getImage2() != null)
+//            picturesList.add(productEntityList.get(position).getImage2());
+//        if (productEntityList.get(position).getImage3() != null)
+//            picturesList.add(productEntityList.get(position).getImage3());
 
-        pictureAdapter = new PictureAdapter(picturesList);
+//        pictureAdapter = new PictureAdapter(picturesList);
         if (productEntityList.get(position).isNew() == true) {
             holder.itemRecyclerViewProductTextViewNew.setText("New");
 
@@ -66,8 +64,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.itemRecyclerViewProductTextViewQuantityValue.setText(String.valueOf(productEntityList.get(position).getQuantity()));
         holder.itemRecyclerViewProductTextViewMadeInValue.setText(productEntityList.get(position).getMadeIn());
         holder.itemRecyclerViewProductTextViewCategoryValue.setText(productEntityList.get(position).getCategoryName());
-//        holder.itemRecyclerViewProductRecyclerViewImage.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
-//        holder.itemRecyclerViewProductRecyclerViewImage.setAdapter(pictureAdapter);
     }
 
     @Override
@@ -76,12 +72,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
     //endregion
 
-    //for Delete Swipe Position
+    //region Delete
     public ProductEntity getProductPosition(int position) {
         return productEntityList.get(position);
     }
+    //endregion
 
-    //Region Interface
+    //region Interface
     public interface ProductOnClickListener {
         void onProductItemLinearParentClickListener(ProductEntity productEntity);
     }

@@ -33,7 +33,7 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/edit_text_background"
                     android:fontFamily="@font/product_sans_regular"
-                    android:hint="Name"
+                    android:hint="Product Name"
                     android:padding="15sp"
                     android:textColor="@color/blue_600" />
 
@@ -48,10 +48,34 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/edit_text_background"
                     android:fontFamily="@font/product_sans_regular"
-                    android:hint="price"
+                    android:hint="Product Price"
                     android:inputType="number"
                     android:padding="15sp"
                     android:textColor="@color/blue_600" />
+
+
+                <LinearLayout
+                    android:id="@+id/fragment_add_and_edit_product_linear_layout_for_offer_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/fragment_add_and_edit_product_edit_offer_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/edit_text_background"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:hint="Offer Price"
+                        android:inputType="number"
+                        android:padding="15sp"
+                        android:textColor="@color/blue_600" />
+                </LinearLayout>
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fragment_add_and_edit_product_text_input_layout_category"
@@ -61,7 +85,8 @@
                     android:layout_marginStart="16sp"
                     android:layout_marginTop="20sp"
                     android:layout_marginEnd="16sp"
-                    android:hint="Category">
+                    android:hint="Product Category"
+                    android:textColorHint="@color/colorPrimaryDark">
 
                     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                         android:id="@+id/fragment_add_and_edit_product_text_input_edit_text_category"
@@ -78,35 +103,14 @@
                     android:layout_marginStart="16sp"
                     android:layout_marginTop="20sp"
                     android:layout_marginEnd="16sp"
-                    android:hint="Made in">
+                    android:hint="MadeIn"
+                    android:textColorHint="@color/colorPrimaryDark">
 
                     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                         android:id="@+id/fragment_add_and_edit_product_text_input_edit_text_made_in"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/fragment_add_and_edit_product_linear_layout_for_offer_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/fragment_add_and_edit_product_edit_offer_price"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:background="@drawable/edit_text_background"
-                        android:fontFamily="@font/product_sans_regular"
-                        android:hint="Offer Price"
-                        android:inputType="number"
-                        android:padding="15sp"
-                        android:textColor="@color/blue_600" />
-                </LinearLayout>
 
 
                 <LinearLayout
@@ -123,10 +127,10 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="18dp"
                         android:layout_marginLeft="16dp"
-                        android:fontFamily="@font/product_sans_regular"
                         android:text="Quantity"
                         android:textColor="@color/light_gray"
-                        android:textSize="20sp" />
+                        android:fontFamily="@font/product_sans_regular"
+                        android:textSize="18dp" />
 
                     <com.shawnlin.numberpicker.NumberPicker
                         android:id="@+id/fragment_add_and_edit_product_number_picker_horizontal"
@@ -172,7 +176,7 @@
                         android:fontFamily="@font/product_sans_regular"
                         android:text="Date Offer"
                         android:textColor="@color/light_gray"
-                        android:textSize="20sp" />
+                        android:textSize="18dp" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/fragment_add_and_edit_product_button_date_picker_start_offer_date"
@@ -203,41 +207,41 @@
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:id="@+id/fragment_add_and_edit_product_linear_layout_for_choose_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16sp"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
+                <!--                <LinearLayout-->
+                <!--                    android:id="@+id/fragment_add_and_edit_product_linear_layout_for_choose_image"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="16sp"-->
+                <!--                    android:orientation="horizontal"-->
+                <!--                    android:padding="8dp">-->
 
-                    <TextView
-                        android:id="@+id/fragment_add_and_edit_product_text_view_choose_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="8dp"
-                        android:fontFamily="@font/product_sans_regular"
-                        android:text="Image"
-                        android:textColor="@color/light_gray"
-                        android:textSize="20sp" />
-
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/fragment_add_and_edit_product_button_choose_multiple_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="100dp"
-                        android:background="@drawable/edit_text_background"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="End Date"
-                        android:textColor="@color/colorPrimaryDark" />
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/fragment_add_and_edit_product_text_view_choose_image"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_gravity="center_vertical"-->
+                <!--                        android:layout_marginStart="8dp"-->
+                <!--                        android:fontFamily="@font/product_sans_regular"-->
+                <!--                        android:text="Image"-->
+                <!--                        android:textColor="@color/light_gray"-->
+                <!--                        android:textSize="20sp" />-->
 
 
-                </LinearLayout>
+                <!--                    <androidx.appcompat.widget.AppCompatButton-->
+                <!--                        android:id="@+id/fragment_add_and_edit_product_button_choose_multiple_image"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_centerInParent="true"-->
+                <!--                        android:layout_gravity="center_vertical"-->
+                <!--                        android:layout_marginLeft="100dp"-->
+                <!--                        android:background="@drawable/edit_text_background"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:padding="10dp"-->
+                <!--                        android:text="End Date"-->
+                <!--                        android:textColor="@color/colorPrimaryDark" />-->
+
+
+                <!--                </LinearLayout>-->
 
 
                 <LinearLayout

@@ -2,8 +2,12 @@ package com.mustafa.smallstore.view.main.category;
 
 import android.app.ActionBar;
 import android.app.Dialog;
+import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,12 +38,15 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
     //region Variables
     CategoryViewModel categoryViewModel;
     CategoryAdapter categoryAdapter;
-    FragmentCategoryBinding binding;
     List<CategoryEntity> categoryEntityList;
     Bundle bundle;
-    Dialog dialog;
+    Vibrator vibrator;
     //endregion
 
+    //region Component
+    Dialog dialog;
+    FragmentCategoryBinding binding;
+    //endregion
 
     //region Life Cycle
     @Override
@@ -52,7 +59,14 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
         categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
 
         categoryViewModel.getAllCategories().observe(getViewLifecycleOwner(), categoryEntities -> {
-            categoryAdapter.refreshList(categoryEntities);
+            if (categoryEntities.size() == 0) {
+                binding.fragmentCategoryAnimation.setAnimation(R.raw.error);
+                binding.fragmentCategoryAnimation.setVisibility(View.VISIBLE);
+            } else {
+                binding.fragmentCategoryAnimation.setVisibility(View.GONE);
+
+                categoryAdapter.refreshList(categoryEntities);
+            }
         });
 
         //Swipe For Delete Account
@@ -64,7 +78,7 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                ShowDialog("yes", "Are you sure want to delete \n             this Category?", viewHolder, viewHolder.getLayoutPosition());
+                showCenterDialogDelete("yes", "Are you sure want to delete \n             this Category?", viewHolder, viewHolder.getLayoutPosition());
             }
 
         }).attachToRecyclerView(binding.fragmentCategoryRecyclerView);
@@ -82,10 +96,8 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
                     .addToBackStack("dsf").commit();
         });
 
-
         return view;
     }
-
     //endregion
 
 
@@ -96,7 +108,6 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
         binding.fragmentCategoryRecyclerView.setHasFixedSize(true);
         binding.fragmentCategoryRecyclerView.setAdapter(categoryAdapter);
     }
-
     //endregion
 
 
@@ -119,78 +130,83 @@ public class CategoryFragment extends Fragment implements CategoryAdapter.Catego
                 .addToBackStack("fasdf")
                 .commit();
     }
+    //endregion
 
-    private void ShowDialog(String yes, String t1, RecyclerView.ViewHolder viewHolder, int positionItem) {
-        Button ok;
-        TextView text;
-        LottieAnimationView status;
-        LottieAnimationView statusSuccessfully;
+    //region Methods
+    private void showCenterDialogDelete(String yes, String t1, RecyclerView.ViewHolder viewHolder, int positionItem) {
+        Button centerDialogForDeleteButtonDeleteOk;
+        TextView centerDialogForDeleteTextviewText;
+        LottieAnimationView centerDialogForDeleteAnimation;
+        LottieAnimationView centerDialogForDeleteSuccessfulAnimation;
+        Vibrator vibrator;
 
+        //Setup The Dialog in Center
         dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.bottom_sheet_for_delete);
+        dialog.setContentView(R.layout.center_dialog_for_delete);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         Window window = dialog.getWindow();
         window.setGravity(Gravity.CENTER);
         window.getAttributes().windowAnimations = R.style.DialogAnimation;
 
-        ok = dialog.findViewById(R.id.bottom_sheet_for_delete_button_delete_ok);
-        text = dialog.findViewById(R.id.bottom_sheet_for_delete_textview_text);
-        status = dialog.findViewById(R.id.bottom_sheet_for_delete_animation);
-        statusSuccessfully = dialog.findViewById(R.id.successful_delete_item_animation);
-
-        text.setText(t1);
+        //FindViewById
+        centerDialogForDeleteButtonDeleteOk = dialog.findViewById(R.id.center_dialog_for_delete_button_delete_ok);
+        centerDialogForDeleteTextviewText = dialog.findViewById(R.id.center_dialog_for_delete_textview_text);
+        centerDialogForDeleteAnimation = dialog.findViewById(R.id.center_dialog_for_delete_animation);
+        centerDialogForDeleteSuccessfulAnimation = dialog.findViewById(R.id.center_dialog_for_delete_successful_animation);
+        centerDialogForDeleteTextviewText.setText(t1);
+        vibrator = (Vibrator) requireActivity().getSystemService(Context.VIBRATOR_SERVICE);
 
         if (yes.equals("Yes")) {
-            status.setAnimation(R.raw.ok_happy);
-            text.setTextColor(getResources().getColor(R.color.green));
-            ok.setBackgroundResource(R.drawable.yes_button_background);
+            centerDialogForDeleteAnimation.setAnimation(R.raw.ok_happy);
+            centerDialogForDeleteTextviewText.setTextColor(getResources().getColor(R.color.green));
+            centerDialogForDeleteButtonDeleteOk.setBackgroundResource(R.drawable.yes_button_background);
 
         }
 
-        ok.setOnClickListener(view -> {
+        //If Click Ok To Delete
+        centerDialogForDeleteButtonDeleteOk.setOnClickListener(view -> {
             categoryViewModel.delete(categoryAdapter.getCategoryPosition(viewHolder.getAdapterPosition()));
-            ok.setVisibility(View.GONE);
-            text.setVisibility(View.GONE);
-            status.setVisibility(View.GONE);
-            statusSuccessfully.setVisibility(View.VISIBLE);
-
+            centerDialogForDeleteButtonDeleteOk.setVisibility(View.GONE);
+            centerDialogForDeleteTextviewText.setVisibility(View.GONE);
+            centerDialogForDeleteAnimation.setVisibility(View.GONE);
+            centerDialogForDeleteSuccessfulAnimation.setVisibility(View.VISIBLE);
+            //For Sound Player
+            final MediaPlayer mediaPlayer = MediaPlayer.create(getActivity(), R.raw.sound_succeful_delete);
             Handler handler = new Handler();
-            Runnable r = () -> dialog.dismiss();
-            handler.postDelayed(r, 2000);
+
+            Runnable r = () ->
+
+                    dialog.dismiss();
+
+            if (centerDialogForDeleteButtonDeleteOk.isClickable()) {
+
+                // this is the only type of the vibration which requires system version Oreo (API 26)
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    final VibrationEffect vibrationEffect1;
+                    // this effect creates the vibration of default amplitude for 1000ms(1 sec)
+                    vibrationEffect1 = VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE);
+                    mediaPlayer.start();
+                    // it is safe to cancel other vibrations currently taking place
+                    vibrator.cancel();
+                    vibrator.vibrate(vibrationEffect1);
+                }
+
+            }
+
+            handler.postDelayed(r, 1600);
         });
 
-//        if (ok.isClickable()) {
-//            DeleteSuccessful();
-//        }
+
         dialog.setCancelable(true);
 
+        //When i Click Out Of Dialog
         dialog.setOnCancelListener(dialogInterface -> {
             categoryAdapter.notifyItemChanged(positionItem);
         });
+        //Setup Screen
         window.setLayout(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         dialog.show();
     }
-
-//    private void DeleteSuccessful() {
-//        LottieAnimationView status;
-//        dialog = new Dialog(getActivity());
-//        dialog.setContentView(R.layout.successful_delete_item);
-//        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-//        Window window = dialog.getWindow();
-//        window.setGravity(Gravity.CENTER);
-//        window.getAttributes().windowAnimations = R.style.DialogAnimation;
-//
-//        status = dialog.findViewById(R.id.successful_delete_item_animation);
-//
-//        Handler handler = new Handler();
-//        Runnable r = new Runnable() {
-//            @Override
-//            public void run() {
-//                dialog.dismiss();
-//            }
-//        };
-//        handler.postDelayed(r, 2000);
-//
-//    }
+    //endregion
 
 }

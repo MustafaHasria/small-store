@@ -7,26 +7,22 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "category_table")
 public class CategoryEntity {
 
+    @ColumnInfo(name = "name")
+    public String name;
     //region Properties
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
-
-    @ColumnInfo(name = "name")
-    public String name;
-
     @ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB)
     private byte[] image;
 
-    @ColumnInfo(name = "parent_category_id")
-    private int parentCategoryId;
     //endregion
 
     //region Constructor
-    public CategoryEntity(String name, byte[] image, int parentCategoryId) {
+    public CategoryEntity(String name, byte[] image) {
         this.name = name;
         this.image = image;
-        this.parentCategoryId = parentCategoryId;
+
     }
 
     //endregion
@@ -55,14 +51,6 @@ public class CategoryEntity {
 
     public void setImage(byte[] image) {
         this.image = image;
-    }
-
-    public int getParentCategoryId() {
-        return parentCategoryId;
-    }
-
-    public void setParentCategoryId(int parentCategoryId) {
-        this.parentCategoryId = parentCategoryId;
     }
 
     //endregion

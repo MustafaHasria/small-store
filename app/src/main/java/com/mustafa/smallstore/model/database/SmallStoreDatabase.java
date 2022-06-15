@@ -20,7 +20,7 @@ import com.mustafa.smallstore.model.entity.ProductEntity;
         AccountEntity.class,
         CategoryEntity.class,
         ProductEntity.class,
-}, version = 2)
+}, version = 1)
 public abstract class SmallStoreDatabase extends RoomDatabase {
 
     //region Variables
@@ -86,13 +86,14 @@ public abstract class SmallStoreDatabase extends RoomDatabase {
             accountDao.insert(new AccountEntity("admin", null, 0, "0123"));
             accountDao.insert(new AccountEntity("t", null, 0, "1"));
             accountDao.insert(new AccountEntity("a", null, 0, "1"));
-            categoryDao.insert(new CategoryEntity("Juice", null, 0));
-            productDao.insert(new ProductEntity("First Item for test", 200, "UAE", false, "", false,
-                    0, "", null, null, null, 1, "Juice", 200));
-            productDao.insert(new ProductEntity("Second Item for test", 200, "UAE", true, "", false,
-                    1000, "", null, null, null, 1, "Juice", 200));
-            productDao.insert(new ProductEntity("third Item for test", 200, "UAE", false, "", true,
-                    0, "", null, null, null, 1, "Juice", 200));
+            categoryDao.insert(new CategoryEntity("Juice", null));
+            categoryDao.insert(new CategoryEntity("ًWater", null));
+            productDao.insert(new ProductEntity("First Item for test", 200, "UAE", false, "", "", false,
+                    0, "", 1, "Juice", 200));
+            productDao.insert(new ProductEntity("Second Item for test", 200, "UAE", true, "", "", false,
+                    1000, "", 1, "Juice", 200));
+            productDao.insert(new ProductEntity("third Item for test", 200, "UAE", false, "", "", true,
+                    0, "", 1, "Juice", 200));
             return null;
         }
     }
