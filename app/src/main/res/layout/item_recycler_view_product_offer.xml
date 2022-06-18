@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_recycler_view_card_view_main_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -9,7 +10,7 @@
     app:cardElevation="6dp">
 
     <LinearLayout
-        android:id="@+id/item_to_recycler_view_product_offer_linear_layout_parent"
+        android:id="@+id/item_recycler_view_product_offer_offer_linear_layout_parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -17,7 +18,7 @@
         android:padding="8dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/item_to_recycler_view_product_recycler_view_image"
+            android:id="@+id/item_recycler_view_product_offer_recycler_view_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -26,17 +27,17 @@
             tools:listitem="@layout/item_recycler_view_picture" />
 
         <RelativeLayout
-            android:id="@+id/item_to_recycler_view_product_relative_layout_for_name_and_new"
+            android:id="@+id/item_recycler_view_product_offer_relative_layout_for_name_and_new"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/item_to_recycler_view_product_text_view_name"
+                android:id="@+id/item_recycler_view_product_offer_text_view_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="8dp"
-                android:layout_toStartOf="@id/item_to_recycler_view_product_text_view_new_or_old"
+                android:layout_toStartOf="@id/item_recycler_view_product_offer_text_view_new_or_old"
                 android:gravity="center"
                 android:text="name of product will show here"
                 android:textColor="@color/black"
@@ -45,7 +46,7 @@
 
 
             <TextView
-                android:id="@+id/item_to_recycler_view_product_text_view_new_or_old"
+                android:id="@+id/item_recycler_view_product_offer_text_view_new_or_old"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -66,7 +67,7 @@
 
 
             <TextView
-                android:id="@+id/item_to_recycler_view_product_text_view_price"
+                android:id="@+id/item_recycler_view_product_offer_text_view_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -79,13 +80,13 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/item_to_recycler_view_product_text_view_price_value"
+                android:id="@+id/item_recycler_view_product_offer_text_view_price_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
-                android:layout_toEndOf="@id/item_to_recycler_view_product_text_view_price"
+                android:layout_toEndOf="@id/item_recycler_view_product_offer_text_view_price"
                 android:text="50"
                 android:textColor="@color/black"
                 android:textSize="18dp">
@@ -99,7 +100,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/item_to_recycler_view_product_text_view_quantity"
+                android:id="@+id/item_recycler_view_product_offer_text_view_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -113,13 +114,13 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/item_to_recycler_view_product_text_view_quantity_value"
+                android:id="@+id/item_recycler_view_product_offer_text_view_quantity_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
-                android:layout_toEndOf="@id/item_to_recycler_view_product_text_view_quantity"
+                android:layout_toEndOf="@id/item_recycler_view_product_offer_text_view_quantity"
                 android:text="50"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
@@ -131,7 +132,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/item_to_recycler_view_product_text_view_made_in"
+                android:id="@+id/item_recycler_view_product_offer_text_view_made_in"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -145,13 +146,13 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/item_to_recycler_view_product_text_view_made_in_value"
+                android:id="@+id/item_recycler_view_product_offer_text_view_made_in_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
-                android:layout_toEndOf="@id/item_to_recycler_view_product_text_view_made_in"
+                android:layout_toEndOf="@id/item_recycler_view_product_offer_text_view_made_in"
                 android:text="UAE"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
@@ -163,7 +164,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/item_to_recycler_view_product_text_view_category"
+                android:id="@+id/item_recycler_view_product_offer_text_view_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -177,13 +178,13 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/item_to_recycler_view_product_text_view_category_value"
+                android:id="@+id/item_recycler_view_product_offer_text_view_category_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
-                android:layout_toEndOf="@id/item_to_recycler_view_product_text_view_category"
+                android:layout_toEndOf="@id/item_recycler_view_product_offer_text_view_category"
                 android:text="Juice"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
@@ -195,7 +196,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/item_to_recycler_view_product_offer_text_view_expire_date"
+                android:id="@+id/item_recycler_view_product_offer_offer_text_view_expire_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -209,13 +210,13 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/item_to_recycler_view_product_offer_text_view_expire_date_value"
+                android:id="@+id/item_recycler_view_product_offer_offer_text_view_expire_date_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
-                android:layout_toEndOf="@id/item_to_recycler_view_product_offer_text_view_expire_date"
+                android:layout_toEndOf="@id/item_recycler_view_product_offer_offer_text_view_expire_date"
                 android:text="2000/2000/200"
                 android:textColor="@color/black"
                 android:textSize="18sp" />

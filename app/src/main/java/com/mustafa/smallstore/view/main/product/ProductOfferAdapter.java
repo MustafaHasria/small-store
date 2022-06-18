@@ -8,25 +8,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mustafa.smallstore.R;
 import com.mustafa.smallstore.model.entity.ProductEntity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class ProductOfferAdapter extends RecyclerView.Adapter<ProductOfferAdapter.ProductOfferViewHolder> {
 
 
+    public String specificDate;
     //region Variables
     List<ProductEntity> productEntityList;
     Context context;
     ProductEntity productEntity;
     ProductOfferOnClickListener productOfferOnClickListener;
-    public String specificDate;
     // List<byte[]> picturesList;
     // PictureAdapter pictureAdapter;
     //endregion
@@ -52,27 +50,13 @@ public class ProductOfferAdapter extends RecyclerView.Adapter<ProductOfferAdapte
     public void onBindViewHolder(@NonNull ProductOfferViewHolder holder, int position) {
         ProductEntity productEntity;
         productEntity = productEntityList.get(position);
-        //for date offer
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-
-        Date startDate;
-        Date expireDate;
-        try {
-            if (!productEntity.getStartDateOffer().isEmpty() && !productEntity.getExpireDateOffer().isEmpty()) {
-                startDate = new SimpleDateFormat("MMM dd, yyyy").parse(productEntity.getStartDateOffer());
-                expireDate = new SimpleDateFormat("MMM dd, yyyy").parse(productEntity.getExpireDateOffer());
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
         holder.itemRecyclerViewProductOfferTextViewName.setText(productEntity.getName());
         holder.itemRecyclerViewProductOfferTextViewOffer_price_value.setText(String.valueOf(productEntity.getOfferCost()));
         holder.itemRecyclerViewProductOfferTextViewQuantityValue.setText(String.valueOf(productEntity.getQuantity()));
         holder.itemRecyclerViewProductOfferTextViewMadeInValue.setText(productEntity.getMadeIn());
         holder.itemRecyclerViewProductOfferTextViewCategoryValue.setText(productEntity.getCategoryName());
         holder.itemRecyclerViewProductOfferTextViewExpireDateOfferValue.setText(productEntity.getExpireDateOffer());
+
     }
 
 //        if (productEntity.getImage1() != null)
@@ -94,8 +78,6 @@ public class ProductOfferAdapter extends RecyclerView.Adapter<ProductOfferAdapte
 //        }
 
 
-}
-
     @Override
     public int getItemCount() {
         return productEntityList.size();
@@ -109,25 +91,24 @@ public class ProductOfferAdapter extends RecyclerView.Adapter<ProductOfferAdapte
     }
     //endregion
 
-
     //region Delete
     public ProductEntity getProductPosition(int position) {
         return productEntityList.get(position);
     }
 //endregion
 
-
-//region Interface
-public interface ProductOfferOnClickListener {
-    void onProductOfferItemLinearParentClickListener(ProductEntity productEntity);
-}
+    //region Interface
+    public interface ProductOfferOnClickListener {
+        void onProductOfferItemLinearParentClickListener(ProductEntity productEntity);
+    }
 //endregion
 
-//region View Holder
-public class ProductOfferViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    //region View Holder
+    public class ProductOfferViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         //region Components
         RecyclerView itemRecyclerViewProductOfferRecyclerViewImage;
+        CardView itemRecyclerViewCardViewMainContainer;
         TextView itemRecyclerViewProductOfferTextViewName;
         TextView itemRecyclerViewProductOfferTextViewOffer;
         TextView itemRecyclerViewProductOfferTextViewOfferPrice;
@@ -146,20 +127,21 @@ public class ProductOfferViewHolder extends RecyclerView.ViewHolder implements V
         //region Constructor
         public ProductOfferViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemRecyclerViewProductOfferRecyclerViewImage = itemView.findViewById(R.id.item_to_recycler_view_product_recycler_view_image);
-            itemRecyclerViewProductOfferTextViewOffer = itemView.findViewById(R.id.item_to_recycler_view_product_text_view_new_or_old);
-            itemRecyclerViewProductOfferTextViewName = itemView.findViewById(R.id.item_to_recycler_view_product_text_view_name);
-            itemRecyclerViewProductOfferTextViewOfferPrice = itemView.findViewById(R.id.item_to_recycler_view_product_text_view_price);
-            itemRecyclerViewProductOfferTextViewOffer_price_value = itemView.findViewById(R.id.item_to_recycler_view_product_text_view_price_value);
-            itemRecyclerViewProductOfferTextViewQuantity = itemView.findViewById(R.id.item_to_recycler_view_product_text_view_quantity);
-            itemRecyclerViewProductOfferTextViewQuantityValue = itemView.findViewById(R.id.item_to_recycler_view_product_text_view_quantity_value);
-            itemRecyclerViewProductOfferTextViewMadeIn = itemView.findViewById(R.id.item_to_recycler_view_product_text_view_made_in);
-            itemRecyclerViewProductOfferTextViewMadeInValue = itemView.findViewById(R.id.item_to_recycler_view_product_text_view_made_in_value);
-            itemRecyclerViewProductOfferTextViewCategory = itemView.findViewById(R.id.item_to_recycler_view_product_text_view_category);
-            itemRecyclerViewProductOfferTextViewCategoryValue = itemView.findViewById(R.id.item_to_recycler_view_product_text_view_category_value);
-            itemRecyclerViewProductOfferTextViewExpireDateOffer = itemView.findViewById(R.id.item_to_recycler_view_product_offer_text_view_expire_date);
-            itemRecyclerViewProductOfferTextViewExpireDateOfferValue = itemView.findViewById(R.id.item_to_recycler_view_product_offer_text_view_expire_date_value);
-            itemRecyclerViewProductOfferLinearlayoutParent = itemView.findViewById(R.id.item_to_recycler_view_product_offer_linear_layout_parent);
+            itemRecyclerViewCardViewMainContainer = itemView.findViewById(R.id.item_recycler_view_card_view_main_container);
+            itemRecyclerViewProductOfferRecyclerViewImage = itemView.findViewById(R.id.item_recycler_view_product_offer_recycler_view_image);
+            itemRecyclerViewProductOfferTextViewOffer = itemView.findViewById(R.id.item_recycler_view_product_offer_text_view_new_or_old);
+            itemRecyclerViewProductOfferTextViewName = itemView.findViewById(R.id.item_recycler_view_product_offer_text_view_name);
+            itemRecyclerViewProductOfferTextViewOfferPrice = itemView.findViewById(R.id.item_recycler_view_product_offer_text_view_price);
+            itemRecyclerViewProductOfferTextViewOffer_price_value = itemView.findViewById(R.id.item_recycler_view_product_offer_text_view_price_value);
+            itemRecyclerViewProductOfferTextViewQuantity = itemView.findViewById(R.id.item_recycler_view_product_offer_text_view_quantity);
+            itemRecyclerViewProductOfferTextViewQuantityValue = itemView.findViewById(R.id.item_recycler_view_product_offer_text_view_quantity_value);
+            itemRecyclerViewProductOfferTextViewMadeIn = itemView.findViewById(R.id.item_recycler_view_product_offer_text_view_made_in);
+            itemRecyclerViewProductOfferTextViewMadeInValue = itemView.findViewById(R.id.item_recycler_view_product_offer_text_view_made_in_value);
+            itemRecyclerViewProductOfferTextViewCategory = itemView.findViewById(R.id.item_recycler_view_product_offer_text_view_category);
+            itemRecyclerViewProductOfferTextViewCategoryValue = itemView.findViewById(R.id.item_recycler_view_product_offer_text_view_category_value);
+            itemRecyclerViewProductOfferTextViewExpireDateOffer = itemView.findViewById(R.id.item_recycler_view_product_offer_offer_text_view_expire_date);
+            itemRecyclerViewProductOfferTextViewExpireDateOfferValue = itemView.findViewById(R.id.item_recycler_view_product_offer_offer_text_view_expire_date_value);
+            itemRecyclerViewProductOfferLinearlayoutParent = itemView.findViewById(R.id.item_recycler_view_product_offer_offer_linear_layout_parent);
             itemRecyclerViewProductOfferLinearlayoutParent.setOnClickListener(this);
         }
 
@@ -169,5 +151,6 @@ public class ProductOfferViewHolder extends RecyclerView.ViewHolder implements V
         }
         //endregion
     }
-    //endregion
+//endregion
 }
+

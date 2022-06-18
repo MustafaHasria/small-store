@@ -30,7 +30,11 @@ import com.mustafa.smallstore.databinding.FragmentProductBinding;
 import com.mustafa.smallstore.model.entity.ProductEntity;
 import com.mustafa.smallstore.view.main.product.addandeditproduct.AddAndEditProductFragment;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 public class ProductFragment extends Fragment implements ProductAdapter.ProductOnClickListener, ProductOfferAdapter.ProductOfferOnClickListener {
@@ -62,7 +66,26 @@ public class ProductFragment extends Fragment implements ProductAdapter.ProductO
         productViewModel = new ViewModelProvider(requireActivity()).get(ProductViewModel.class);
         productViewModel.getAllProducts().observe(requireActivity(), productEntities -> {
             productAdapter.refreshList(productEntities);
-            productOfferAdapter.refreshList(productEntities);
+            Date date = new Date();
+            List<ProductEntity> productEntityOfferList = new ArrayList<>();
+            for (int i = 0; i < productEntities.size(); i++) {
+                ProductEntity productOfferEntity = productEntities.get(i);
+                Date startDate = null;
+                Date expireDate = null;
+                try {
+                    if (!productOfferEntity.getStartDateOffer().isEmpty() && !productOfferEntity.getExpireDateOffer().isEmpty()) {
+                        startDate = new SimpleDateFormat("MMM dd, yyyy").parse(productOfferEntity.getStartDateOffer());
+                        expireDate = new SimpleDateFormat("MMM dd, yyyy").parse(productOfferEntity.getExpireDateOffer());
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                if (startDate != null && date.compareTo(startDate) > 0 && date.compareTo(expireDate) < 0) {
+                    productEntityOfferList.add(productOfferEntity);
+                }
+            }
+            productOfferAdapter.refreshList(productEntityOfferList);
 
         });
 
